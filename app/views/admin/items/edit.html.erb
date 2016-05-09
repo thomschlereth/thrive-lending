@@ -1,0 +1,19 @@
+<div class="container form-spacing">
+  <div class="vertical-center-row">
+    <div align="center">
+      <h1>Edit Item</h1>
+
+      <%= form_for @item, url:{:controller=>'admin/items', :action=>'update'} do |f| %>
+        <p><%= f.text_field :name, placeholder: "Name" %></p>
+        <p><%= f.text_field :description, placeholder: "Description" %></p>
+        <p><%= f.number_field :price, step: "any", placeholder: "Price" %></p>
+        <p><%= f.number_field :category_id, placeholder: "Category ID" %></p>
+        <p ><%= f.label 'retired', "Retired" %>
+        <%= f.radio_button :retired, true %></p>
+        <p><%= f.label 'not_retired', "Not Retired" %>
+        <%= f.radio_button :retired, false %></p>
+        <p><%= f.submit  %></p>
+      <% end %>
+    </div>
+  </div>
+</div>

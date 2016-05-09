@@ -1,0 +1,17 @@
+
+<div class="container">
+	 <div class="bikes">
+		 <h3>POPULAR ITEMS</h3>
+     <div class="categorie-grids">
+     <% sample.each do |item| %>
+			 <div class="col-md-4">
+				 <%= render partial: "shared/imagesmall", locals: { item:item } %>
+				 <%= content_tag :h4, item.name %>
+				 <%= content_tag :p, item.description %>
+         <%= content_tag :p, number_to_currency(item.price) %><br />
+				 <%= render partial: "shared/cartbutton", locals: {item:item} %>
+			 </div>
+       <% end %>
+	 </div>
+ </div>
+</div>

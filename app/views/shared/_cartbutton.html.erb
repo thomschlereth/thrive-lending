@@ -1,0 +1,5 @@
+<% if item.retired? %>
+  <%= button_to "Item Retired", cart_items_path(item_id: item.id), class:"btn_form", disabled: true %>
+<% else %>
+  <%= button_to "Add to Cart", cart_items_path(item_id: item.id), class:"btn_form" %>
+<% end %>

@@ -1,0 +1,9 @@
+<ul>
+  <li><%= @item.name %></li>
+  <ul>
+    <li><%= @item.description %></li>
+    <li><%= render partial: "shared/imagesmall", locals: { item:@item } %></li>
+    <li><%= number_to_currency(@item.price) %></li>
+    </li>
+  </ul>
+</ul>

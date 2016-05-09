@@ -1,0 +1,50 @@
+<h4>Order Number:<%= order.id %></h4>
+</div>
+<div class="cart-conclusion">
+<h5>Order Date: <%= Order.format_time(order.created_at) %></h5>
+<h5>Order Status: <%= order.status %></h5>
+<% if order.status == "cancelled" || order.status == "completed" %>
+<%= Order.format_time(order.updated_at) %>
+<% end %>
+<table width="500px">
+  <tr>
+    <th>
+      Name
+    </th>
+    <th>
+      Quantity
+    </th>
+    <th>
+      Price
+    </th>
+    <th>
+      Subtotal
+    </th>
+  </tr>
+  <% order_items.each do |order_item| %>
+  <tr>
+    <td>
+      <%= link_to order_item.item.name, item_path(order_item.item) %>
+    </td>
+    <td>
+      <%= order_item.quantity %>
+    </td>
+    <td>
+      <%= number_to_currency(order_item.item.price) %>
+    </td>
+    <td>
+      <%= number_to_currency(order_item.subtotal) %>
+    </td>
+  </tr>
+  <% end %>
+  <tr>
+    <td colspan="3">
+      Grand Total:
+    </td>
+    <td>
+      <%= number_to_currency(order.total_price) %>
+    </td>
+
+  </tr>
+
+</table>

@@ -1,0 +1,59 @@
+<div class="cart">
+	<div class="container">
+		<div class="cart-top">
+			<%= link_to "<< home", root_path %>
+		</div>
+
+		<div class="col-md-9 cart-items">
+			<h2>My Cart (<%= @cart.count_all %>)</h2>
+			<% @items.each do |item| %>
+			<div class="cart-header">
+				<div class="cart-sec">
+					<div class="cart-item cyc">
+						<%= render partial: "shared/imagesquare", locals:{item:item} %>
+					</div>
+					<div class="cart-item-info">
+						<h3><%= item.name %><span></span></h3>
+						<div class="cart-remove"><%= button_to "X", cart_item_path(item), method: :delete %></div>
+						<h4>Unit Price: <%= number_to_currency(item.price) %></h4>
+						<h4>Subtotal: <%= number_to_currency(item.subtotal) %></h4>
+						<%= form_for :session, url: cart_item_path(:id, {item_id: item.id}), html: {method: "patch"} do |f| %>
+							<%= f.number_field :quantity, value: item.quantity, min: 1, class: "form-control input-small" %>
+							<%= f.submit "Update Quantity", class:"cart-update" %>
+						<% end %>
+					</div>
+
+					<div class="clearfix"></div>
+				</div>
+			</div>
+			<% end %>
+		</div>
+
+		<div class="col-md-3 cart-total">
+			<div class="price-details">
+				<h3>Price Details</h3>
+				<span>Total</span>
+				<span class="total"><%= number_to_currency(@cart.total_price) %></span>
+				<span>Discount</span>
+				<span class="total">---</span>
+				<span>Delivery Charges</span>
+				<span class="total">Free Shipping! Today Only!</span>
+				<div class="clearfix"></div>
+			</div>
+			<span class="total final"><h4 class="last-price">TOTAL
+				<%= number_to_currency(@cart.total_price) %></h4></span>
+				<div class="clearfix"></div>
+
+
+				<% if current_user %>
+				<% if @cart.contents.empty? %>
+				<% else %>
+				<%= button_to "Place Order", orders_path, class: "order" %>
+				<% end %>
+				<% else %>
+				<%= button_to "Login to Checkout", login_path, method: :get, class:"order" %>
+				<% end %>
+
+			</div>
+		</div>
+	</div>

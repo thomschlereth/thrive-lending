@@ -1,0 +1,29 @@
+<% all_items.each_slice(4).to_a.each do |items| %>
+  <% items.each do |item| %>
+    <%= link_to item_path(item) do %>
+    <div class="bike">
+      <%= render partial: "shared/imagesquare", locals: { item:item } %>
+      <div class="bike-cost">
+        <div class="bike-mdl">
+          <h4>
+            <%= item.name %>
+            <span><%= number_to_currency(item.price) %></span>
+          </h4>
+        </div>
+       <div class="bike-cart">
+         <% if item.retired? %>
+            <%= link_to "Item Retired", "", class:"buy" %>
+          <% else %>
+            <%= render partial: "shared/cartbutton", locals: {item:item} %>
+          <% end %>
+
+       </div>
+       <div class="clearfix"></div>
+      <% end %>
+
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+    <div class="clearfix"></div>
+</div>

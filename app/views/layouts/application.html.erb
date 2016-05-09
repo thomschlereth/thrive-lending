@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Nachomoms Paleo Store</title>
+  <%= render partial: "shared/head" %>
+</head>
+<body>
+  <div id="pagewrap">
+    <%= render partial: "shared/shortbanner" unless @disable_nav %>
+    <% flash.each do |type, message| %>
+    <%= content_tag :div, message.html_safe, class: type %>
+    <% end %>
+    <div id="main_body">
+      <%= yield %>
+    <%= render partial: "shared/footer" %>
+  </div>
+
+</body>
+</html>

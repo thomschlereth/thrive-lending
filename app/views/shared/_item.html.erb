@@ -1,0 +1,40 @@
+<div class="product">
+	 <div class="container">
+		 <div class="ctnt-bar cntnt">
+			 <div class="content-bar">
+				 <div class="single-page row">
+			      <div class="product-head">
+						  <%= link_to "All Items", items_path %> <span>::</span>
+              <%= link_to item.category.name, "/#{item.category.name}" %> <span>::</span>
+              <%= item.name %>
+			      </div>
+
+            <div class="details-left-slider col-lg-2">
+              <div class="grid images_3_of_2">
+
+                <%= render partial: "shared/imagesmall", locals: { item:item } %>
+
+              </div>
+            </div>
+
+            <div class="details-left-info col-lg-10">
+               <h3><%= item.name %></h3>
+               <h4></h4>
+               <p><%= number_to_currency(item.price) %></p>
+                <div class="btn_form">
+                  <%= render partial: "shared/cartbutton", locals: {item:item} %>
+
+                </div>
+               <div class="bike-type">
+                 <p>CATEGORY  ::<%= link_to item.category.name, "/#{item.category.name}" %></p>
+               </div>
+               <h5>Description  ::</h5>
+               <p class="desc"><%= item.description %></p>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

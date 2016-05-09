@@ -1,0 +1,18 @@
+<div class="container form-spacing">
+  <div class="vertical-center-row">
+    <div align="center">
+      <h1>Item Creation Page</h1>
+      <h3>Enter New Item Information:</h3>
+
+      <%= form_for @item, url:{:controller=>'admin/items', :action=>'create'} do |f| %>
+        <p><%= f.text_field :name, placeholder: "Name" %></p>
+        <p><%= f.text_field :description, placeholder: "Description" %></p>
+        <p><%= f.file_field :avatar %></p>
+        <p><%= f.number_field :price, step: "any", placeholder: "Price" %></p>
+        <p><%= f.number_field :category_id, placeholder: "Category ID" %></p>
+
+        <p><%= f.submit class:"btn btn-primary" %></p>
+      <% end %>
+    </div>
+  </div>
+</div>

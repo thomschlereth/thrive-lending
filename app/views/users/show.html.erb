@@ -1,0 +1,49 @@
+<div class="cart">
+	<div class="container">
+		<div class="cart-top">
+      <h1> <%= @user.first_name %>'s Profile</h1>
+    </div>
+    <div class="cart-conclusion">
+      <table width="500px">
+        <tr>
+          <td>
+            Name
+          </td>
+          <td>
+            <%= @user.first_name %> <%= @user.last_name %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            E-Mail
+          </td>
+          <td>
+            <%= @user.email %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Address
+          </td>
+          <td>
+            <%= @user.address %>, <%= @user.city %>, <%= @user.state %> <%= @user.zipcode %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Number of Orders
+          </td>
+          <td>
+            <%= @orders.size %>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <%= render partial: "shared/orders", locals: { orders:@orders } %>
+          </td>
+        </tr>
+      </table>
+
+    </div>
+  </div>
+</div>
