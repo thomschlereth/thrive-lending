@@ -34,6 +34,15 @@
     end
   end
 
+  def destroy
+    if current_user.loan_requests.delete(params[:id])
+      redirect_to dashboard_path(current_user.id)
+    else
+
+    end
+  end
+
+
     private
 
   def loan_request_params
