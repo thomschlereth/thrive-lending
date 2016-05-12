@@ -25,6 +25,7 @@ gem 'figaro'
 gem 'paperclip'
 gem 'aws-sdk', '< 2.0'
 gem 'unicorn'
+gem 'faker'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 group :development, :test do
@@ -34,12 +35,12 @@ group :development, :test do
   gem 'capybara'
   gem 'launchy'
   gem 'byebug'
-  gem 'faker'
+
   gem 'mocha'
   gem 'rspec-mocks'
   gem 'shoulda'
 
-  gem 'rspec-core' 
+  gem 'rspec-core'
   gem 'rspec-expectations'
   gem 'rspec-support'
 end
