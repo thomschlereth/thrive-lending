@@ -6,14 +6,14 @@ RSpec.feature "User can login" do
     user = User.first
 
     visit '/login'
-    fill_in "Username", with: user.email
+    fill_in "Username", with: user.username
     fill_in "Password", with: "password"
     click_on "Log in"
 
     assert_equal "/dashboard", current_path
 
     assert page.has_content? "Hello, #{user.first_name}"
-    refute page.has_link? "Login"
+    refute page.has_link? "Log In"
     assert page.has_link? "Log Out"
   end
 

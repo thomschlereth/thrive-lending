@@ -1,8 +1,25 @@
-<h1><%= @user.username.capitalize %>'s Loan Requests:</h1>
+<div class="mainbody">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+				<h2><%= @user.username.capitalize %>'s Loan Requests:</h2>
 
-<% @user.loan_requests.each do |req| %>
-<div class="req-<%= "#{req.id}" %>">
-	Loan Request #<%= req.id %>
-	Amount: <%= req.amount %>
-	Max Interest Rate: <%= req.max_int_rate %><br>
-<% end %>
+				<% @user.loan_requests.each.with_index(1) do |req, i| %>
+					<div class="list-group">
+						<div class="list-group-item">
+							<h4>Offer #<%= i %></h4>
+						</div>
+						<div class="list-group-item">
+							<h4 class="list-group-item-heading">Amount:</h4>
+							<p class="list-group-item-text"><%= number_to_currency(req.amount) %></p>
+						</div>
+						<div class="list-group-item">
+							<h4 class="list-group-item-heading">Max Interest Rate:</h4>
+							<p class="list-group-item-text"><%= req.max_int_rate %></p>
+						</div>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

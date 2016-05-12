@@ -11,6 +11,16 @@ html, body {
   margin-left: -150px; /* this needs to be 1/2 the width */
   z-index: 7000;
 }
+
+.signup {
+  text-align: center;
+}
+
+.signup > p {
+  color: #ccc;
+  font-size: .7em;
+}
+
 .wrapper {
   position: relative;
   min-height: 100%;

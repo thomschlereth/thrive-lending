@@ -6,7 +6,7 @@ RSpec.feature "User can create a loan request" do
     user = User.last
 
     visit '/login'
-    fill_in "Username", with: user.email
+    fill_in "Username", with: user.username
     fill_in "Password", with: "password"
     click_on "Log in"
 
@@ -16,9 +16,9 @@ RSpec.feature "User can create a loan request" do
 
     assert_equal new_loan_request_path, current_path
 
-    fill_in "Loan Amount", with: "3000"
-    fill_in "Maximum Interest Rate", with: "20"
-    click_on "Submit Loan Request"
+    fill_in "Amount in Dollars:", with: "3000"
+    fill_in "Max Interest Rate", with: "20"
+    click_on "Let's Go!"
 
     request = LoanRequest.last
 

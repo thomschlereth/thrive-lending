@@ -1,7 +1,19 @@
-<h1>Create New Loan Request:</h1>
-
-<%= form_for @loan_request do |f|%>
-  <%= f.text_field :amount, placeholder: "Loan Amount" %>
-  <%= f.text_field :max_int_rate, placeholder: "Maximum Interest Rate" %>
-  <%= f.submit "Submit Loan Request" %>
-<% end %>
+<div class="mainbody">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4 signup">
+      <h2>Our lenders are anxious to get money in your bank account today! Request Now!</h2>
+      <p>*loans take more than a day be approved and appear in your bank account.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2 col-md-offset-5">
+      <%= form_for @loan_request do |f|%>
+        <%= f.label :amount, "Amount in Dollars:" %><br />
+        <%= f.text_field :amount, placeholder: "10000", class:"form-control" %><br />
+        <%= f.label :max_int_rate, "Max Interest Rate:" %><br />
+        <%= f.text_field :max_int_rate, placeholder: "7.99", class:"form-control" %><br />
+        <%= f.submit "Let's Go!" %>
+      <% end %>
+    </div>
+  </div>
+</div>

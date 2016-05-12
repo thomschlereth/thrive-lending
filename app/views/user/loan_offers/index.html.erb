@@ -1,8 +1,28 @@
-<h2><%= "#{@user.first_name} #{@user.last_name}" %></h2>
-<ul>
-  <% @loan_offers.each do |loan_offer| %>
-    <li><%= loan_offer.amount %></li>
-    <li><%= loan_offer.rate %></li>
-    <li><%= loan_offer.term %></li>
-  <% end %>
-</ul>
+<div class="mainbody">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <h2><%= "#{@user.first_name} #{@user.last_name}" %>'s Loan Offers</h2>
+          <% @loan_offers.each.with_index(1) do |loan_offer, i| %>
+          <div class="list-group">
+            <div class="list-group-item">
+              <h4 class="list-group-item-heading">Offer #<%= i %></h4>
+            </div>
+            <div class="list-group-item">
+              <h4 class="list-group-item-heading">Amount:</h4>
+              <p class="list-group-item-text"><%= number_to_currency(loan_offer.amount) %></p>
+            </div>
+            <div class="list-group-item">
+              <h4 class="list-group-item-heading">Interest Rate:</h4>
+              <p class="list-group-item-text"><%= loan_offer.rate %></p>
+            </div>
+            <div class="list-group-item">
+              <h4 class="list-group-item-heading">Term:</h4>
+              <p class="list-group-item-text"><%= loan_offer.term %> months</p>
+            </div>
+          </div>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</div>

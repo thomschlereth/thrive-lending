@@ -1,7 +1,7 @@
 <div id="container">
   <%= form_for(:session, url: login_path) do |f| %>
-    <%= f.label :email, "Username: " %>
-    <%= f.text_field :email, placeholder: "Username", type: "name" %>
+    <%= f.label :username, "Username: " %>
+    <%= f.text_field :username, placeholder: "Username", type: "name" %>
     <%= f.label :username, "Password: " %>
     <p><a href="#">Forgot your password?</a></p>
     <%= f.password_field :password, placeholder: "Password", class:"form-control" %><br />
