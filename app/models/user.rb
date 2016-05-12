@@ -16,9 +16,4 @@ class User < ActiveRecord::Base
 
   enum role: ["default", "admin"]
 
-  # before_create :generate_slug
-  #
-  # def generate_slug
-  #   self.slug = self.username.parameterize
-  # end
 end
