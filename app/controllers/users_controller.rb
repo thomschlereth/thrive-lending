@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      session[:user_id] = @user.id
+      session[:username] = @user.username
       flash[:notice] = "Logged in as #{@user.first_name} #{@user.last_name}"
       redirect_to session[:redirect]
     else
@@ -18,7 +18,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(current_user.id)
+    @user = current_user
     @orders = @user.orders
   end
 
