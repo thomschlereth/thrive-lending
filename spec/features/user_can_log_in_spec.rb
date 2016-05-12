@@ -14,7 +14,7 @@ RSpec.feature "User can login" do
 
     assert page.has_content? "Hello, #{user.first_name}"
     refute page.has_link? "Login"
-    assert page.has_button? "Logout"
+    assert page.has_link? "Log Out"
   end
 
   scenario "types wrong password" do
