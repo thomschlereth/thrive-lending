@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160427173124) do
+ActiveRecord::Schema.define(version: 20160510221623) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,17 @@ ActiveRecord::Schema.define(version: 20160427173124) do
   end
 
   add_index "items", ["category_id"], name: "index_items_on_category_id", using: :btree
+
+  create_table "loan_offers", force: :cascade do |t|
+    t.integer  "rate"
+    t.integer  "term"
+    t.integer  "amount"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "loan_offers", ["user_id"], name: "index_loan_offers_on_user_id", using: :btree
 
   create_table "order_items", force: :cascade do |t|
     t.integer  "order_id"
@@ -65,9 +76,11 @@ ActiveRecord::Schema.define(version: 20160427173124) do
     t.string  "password_digest"
     t.string  "address"
     t.integer "role"
+    t.string  "username"
   end
 
   add_foreign_key "items", "categories"
+  add_foreign_key "loan_offers", "users"
   add_foreign_key "order_items", "items"
   add_foreign_key "order_items", "orders"
   add_foreign_key "orders", "users"

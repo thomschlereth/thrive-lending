@@ -1,0 +1,13 @@
+<h2>Do you need to update the terms of the loan you're offering?</h2>
+
+<%= form_for @loan_offer do |f| %>
+  <%= f.label "Amount $" %>
+  <%= f.text_field :amount, class:"form-control"  %><br />
+  <%= f.label "Rate" %>
+  <%= f.text_field :rate, class:"form-control"  %>
+  <%= f.label "%" %><br />
+  <%= f.label "Term" %>
+  <%= f.text_field :term, class:"form-control"  %>
+  <%= f.label "Months" %><br />
+  <%= f.submit "That was easy", class:"btn btn-primary"%>
+<% end %>

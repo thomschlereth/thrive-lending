@@ -1,0 +1,9 @@
+<h2>Offer up a loan today, so tomorrow you'll get paid!</h2>
+<p>*loans usually take more than a day to be repaid, and return values vary</p><br />
+
+<%= form_for @loan_offer do |f| %>
+  <%= f.text_field :amount, placeholder: "Amount", class:"form-control"  %><br />
+  <%= f.text_field :rate, placeholder: "Rate", class:"form-control"  %><br />
+  <%= f.text_field :term, placeholder: "Term", class:"form-control"  %><br />
+  <%= f.submit "Sign me up", class:"btn btn-primary"%>
+<% end %>
