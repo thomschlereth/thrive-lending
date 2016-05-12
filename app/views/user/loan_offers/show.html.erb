@@ -1,0 +1,8 @@
+<h2><%= "#{@user.first_name} #{@user.last_name}" %></h2>
+
+<ul>
+<li>amount: $<%= @loan_offer.amount %></li>
+<li>rate: <%= @loan_offer.rate %>%</li>
+<li>term: <%= @loan_offer.term %> months</li>
+</ul>
+<%= button_to "Delete offer", loan_offer_path(@loan_offer.id), method: :delete %>

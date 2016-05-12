@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_secure_password
+  has_many :loan_offers
   has_many :orders
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -9,8 +10,15 @@ class User < ActiveRecord::Base
   validates :email,          format: { with: VALID_EMAIL_REGEX }
   validates :city,           presence: true
   validates :state,          presence: true
+  validates :username,       presence: true
   validates :zipcode,        presence: true,
                              length: { minimum: 5 }
 
   enum role: ["default", "admin"]
+
+  # before_create :generate_slug
+  #
+  # def generate_slug
+  #   self.slug = self.username.parameterize
+  # end
 end

@@ -1,0 +1,8 @@
+<h2><%= "#{@user.first_name} #{@user.last_name}" %></h2>
+<ul>
+  <% @loan_offers.each do |loan_offer| %>
+    <li><%= loan_offer.amount %></li>
+    <li><%= loan_offer.rate %></li>
+    <li><%= loan_offer.term %></li>
+  <% end %>
+</ul>
