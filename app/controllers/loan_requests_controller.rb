@@ -17,6 +17,32 @@
   def index
     @loan_requests = LoanRequest.all
   end
+
+  def edit
+    @loan_request = LoanRequest.find(params[:id])
+  end
+
+  def update
+    @loan_request = LoanRequest.find(params[:id])
+
+    if @loan_request.update(loan_request_params)
+      flash[:success] = "Loan Request Successfully Updated."
+      redirect_to user_loan_request_path(current_user.username, @loan_request.id)
+    else
+      flash[:warning] = "Invalid Loan Request"
+      render :edit
+    end
+  end
+
+  def destroy
+    if current_user.loan_requests.delete(params[:id])
+      redirect_to dashboard_path(current_user.id)
+    else
+
+    end
+  end
+
+
     private
 
   def loan_request_params

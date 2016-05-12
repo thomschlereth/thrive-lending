@@ -1,3 +1,6 @@
 <h1>Loan Request:</h1>
 Amount: <%= @loan_request.amount %><br>
 Max Interest Rate: <%= @loan_request.max_int_rate %><br>
+
+<div class="btn"><%= link_to "Edit Loan Request", edit_loan_request_path(@loan_request) %></div>
+<div class="btn"><%= link_to "Delete Loan Request", loan_request_path(@loan_request), method: :delete %></div>

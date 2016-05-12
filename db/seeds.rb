@@ -64,7 +64,7 @@ class Seed
                   email: "thom@thom.thom", city: "Denver", state: "CO",
                   zipcode: "80229", password: "password",
                   address: "The Purgatory of waiting to see if we pass or fail",
-                  role: 1, username: "thom")
+                  role: 0, username: "thom")
     end
 end
 
