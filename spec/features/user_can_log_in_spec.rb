@@ -11,7 +11,6 @@ RSpec.feature "User can login" do
     click_on "Log in"
 
     assert_equal "/dashboard", current_path
-
     assert page.has_content? "Hello, #{user.first_name}"
     refute page.has_link? "Log In"
     assert page.has_link? "Log Out"
