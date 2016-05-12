@@ -1,0 +1,8 @@
+<h1><%= @user.username.capitalize %>'s Loan Requests:</h1>
+
+<% @user.loan_requests.each do |req| %>
+<div class="req-<%= "#{req.id}" %>">
+	Loan Request #<%= req.id %>
+	Amount: <%= req.amount %>
+	Max Interest Rate: <%= req.max_int_rate %><br>
+<% end %>

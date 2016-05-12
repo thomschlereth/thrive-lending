@@ -1,0 +1,3 @@
+class LoanRequest < ActiveRecord::Base
+  belongs_to :user
+end

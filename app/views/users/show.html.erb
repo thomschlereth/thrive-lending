@@ -1,7 +1,7 @@
 <div class="cart">
 	<div class="container">
 		<div class="cart-top">
-      <h1> <%= @user.first_name %>'s Profile</h1>
+      <h1> <%= @user.first_name.capitalize %>'s Profile</h1>
     </div>
     <div class="cart-conclusion">
       <table width="500px">
@@ -43,7 +43,10 @@
           </td>
         </tr>
       </table>
-
+      <div class= "btn"><%= link_to "Create a Loan Request", new_loan_request_path %></div>
+      <div class= "btn"><%= link_to "View My Loan Requests", user_loan_requests_path(@user.username) %></div><br>
+      <div class= "btn"><%= link_to "Create a Loan Offer", new_loan_offer_path %></div>
+      <div class= "btn"><%= link_to "View My Loan Offers", user_loan_offers_path(@user.username) %></div>
     </div>
   </div>
 </div>

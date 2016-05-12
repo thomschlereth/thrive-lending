@@ -19,6 +19,16 @@ Rails.application.routes.draw do
   get '/orders', to: 'orders#index', as: 'orders'
   post '/orders/', to: 'orders#create'
 
+  resources :loan_requests, only: [:index, :create, :new, :edit, :update, :destroy]
+
+
+
+  get    '/:username/loan_requests/', to: 'user/loan_requests#index', as: 'user_loan_requests'
+  get    '/:username/loan_requests/:id/edit', to: 'user/loan_requests#edit', as: 'edit_user_loan_request'
+  get    '/:username/loan_requests/:id', to: 'user/loan_requests#show', as: 'user_loan_request'
+ 
+
+
   # namespace admin, resources items, resources users, only show
   get    '/admin/items', to: 'admin/items#index', as: 'admin_items'
   post   '/admin/items', to: 'admin/items#create'
@@ -29,7 +39,7 @@ Rails.application.routes.draw do
   delete '/admin/items/:id', to: 'admin/items#destroy'
   get    '/admin/users/:id', to: 'admin/users#show', as: 'admin_user'
   get "/order", to: "orders#show"
-  get "/dashboard", to: "users#show"
+  get "/dashboard", to: "users#show", as: 'dashboard'
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"

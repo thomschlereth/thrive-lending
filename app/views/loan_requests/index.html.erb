@@ -1,0 +1,9 @@
+<h1>All Loan Requests:</h1>
+
+<% @loan_requests.each do |req| %>
+<div class="req-<%= req.id %>">
+	Loan Request # <%= req.id %><br>
+	Amount: <%= req.amount %><br>
+	Max Interest Rate: <%= req.max_int_rate %><br>
+</div>
+<% end %>

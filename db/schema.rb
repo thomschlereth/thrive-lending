@@ -11,6 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20160512035853) do
 
   # These are extensions that must be enabled in order to support this database
@@ -45,6 +46,16 @@ ActiveRecord::Schema.define(version: 20160512035853) do
   end
 
   add_index "loan_offers", ["user_id"], name: "index_loan_offers_on_user_id", using: :btree
+
+  create_table "loan_requests", force: :cascade do |t|
+    t.integer  "user_id"
+    t.decimal  "amount"
+    t.decimal  "max_int_rate"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "loan_requests", ["user_id"], name: "index_loan_requests_on_user_id", using: :btree
 
   create_table "order_items", force: :cascade do |t|
     t.integer  "order_id"
@@ -81,6 +92,7 @@ ActiveRecord::Schema.define(version: 20160512035853) do
 
   add_foreign_key "items", "categories"
   add_foreign_key "loan_offers", "users"
+  add_foreign_key "loan_requests", "users"
   add_foreign_key "order_items", "items"
   add_foreign_key "order_items", "orders"
   add_foreign_key "orders", "users"

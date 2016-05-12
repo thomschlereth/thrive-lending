@@ -1,7 +1,8 @@
   require 'test_helper'
 
 class UserCanLoginTest < ActionDispatch::IntegrationTest
-  test "user can login with valid credentials" do
+  
+    test "user can login with valid credentials" do
     create_user
     user = User.first
     visit '/login'

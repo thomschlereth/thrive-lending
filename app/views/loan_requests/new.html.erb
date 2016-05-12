@@ -1,0 +1,7 @@
+<h1>Create New Loan Request:</h1>
+
+<%= form_for @loan_request do |f|%>
+  <%= f.text_field :amount, placeholder: "Loan Amount" %>
+  <%= f.text_field :max_int_rate, placeholder: "Maximum Interest Rate" %>
+  <%= f.submit "Submit Loan Request" %>
+<% end %>
