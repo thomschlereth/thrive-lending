@@ -9,7 +9,7 @@ RSpec.feature "User can view own loan requests" do
     request = user.loan_requests.first
     
     visit '/login'
-    fill_in "E-Mail", with: user.email
+    fill_in "Username", with: user.email
     fill_in "Password", with: "password"
     click_on "Log in"
     click_on "View My Loan Requests"

@@ -10,7 +10,7 @@ class UserCanCheckoutTest < ActionDispatch::IntegrationTest
 
     find(:xpath, "//a[@href='/cart']").click
     click_on "Login"
-    fill_in "E-Mail", with: User.first.email
+    fill_in "Username", with: User.first.email
     fill_in "Password", with: "password"
     click_on "Log in"
     assert_equal "/cart", current_path

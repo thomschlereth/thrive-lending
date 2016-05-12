@@ -21,7 +21,7 @@ class UserCreatesAnAccountTest < ActionDispatch::IntegrationTest
     fill_in "City", with: user_info[:city]
     fill_in "State", with: user_info[:state]
     fill_in "Zip Code", with: user_info[:zipcode]
-    fill_in "E-Mail", with: user_info[:email]
+    fill_in "Username", with: user_info[:email]
     fill_in "Password", with: user_info[:password]
     click_button "Create Account"
     click_link "Dashboard"

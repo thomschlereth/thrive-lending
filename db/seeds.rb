@@ -3,7 +3,7 @@ class Seed
   def initialize
     create_users
     create_loan_offers
-    # create_loan_requests
+    create_loan_requests
   end
 
   def create_users
@@ -12,10 +12,11 @@ class Seed
     create_mark_admin
     create_thom_admin
     until User.count == 50 do
-      User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
+      username = Faker::Name.first_name
+      User.create!(first_name: username, last_name: Faker::Name.last_name,
                   email: Faker::Internet.email, city: Faker::Address.city, state: Faker::Address.state,
                   zipcode: Faker::Address.zip, password: "password",
-                  address: Faker::Address.street_address, role: 0, username: Faker::Internet.user_name)
+                  address: Faker::Address.street_address, role: 0, username: username.downcase)
     end
     puts "Created Users"
   end
@@ -31,15 +32,15 @@ class Seed
     puts "Created Loan Offers"
   end
 
-  # def create_loan_requests
-  #   puts "Creating Loan Requests"
-  #   until LoanRequest.count == 100 do
-  #     user = User.find(rand(4..50))
-  #     user.loan_requests.create!(amount_requested: rand(50..10000),
-  #                                max_interest_rate: "#{rand(3..20)}.#{rand(0..99)}".to_f)
-  #   end
-  #   puts "Created Loan Requests"
-  # end
+  def create_loan_requests
+    puts "Creating Loan Requests"
+    until LoanRequest.count == 100 do
+      user = User.find(rand(4..50))
+      user.loan_requests.create!(amount: rand(50..10000),
+                                 max_int_rate: "#{rand(3..20)}.#{rand(0..99)}".to_f)
+    end
+    puts "Created Loan Requests"
+  end
   private
 
     def create_kami_admin

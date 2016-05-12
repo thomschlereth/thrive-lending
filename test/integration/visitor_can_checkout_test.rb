@@ -12,7 +12,7 @@ class VisitorCanCheckoutTest < ActionDispatch::IntegrationTest
     click_link "Create Account"
     fill_in "First Name", with: "Mark"
     fill_in "Last Name", with: "Miranda"
-    fill_in "E-Mail", with: "markmiranda51@gmail.com"
+    fill_in "Username", with: "markmiranda51@gmail.com"
     fill_in "Street Address", with: "123 Fake Street"
     fill_in "City", with: "Denver"
     fill_in "State", with: "CO"

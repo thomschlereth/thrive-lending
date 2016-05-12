@@ -6,7 +6,7 @@ class UserCanLoginTest < ActionDispatch::IntegrationTest
     create_user
     user = User.first
     visit '/login'
-    fill_in "E-Mail", with: user.email
+    fill_in "Username", with: user.email
     fill_in "Password", with: "password"
     click_button "Log in"
 
@@ -17,8 +17,11 @@ class UserCanLoginTest < ActionDispatch::IntegrationTest
     assert page.has_content? user.city
     assert page.has_content? user.state
     assert page.has_content? user.zipcode
-    refute page.has_link? "Login"
-    assert page.has_button? "Logout"
+    refute page.has_link? "Log In"
+    assert page.has_link? "Log Out"
 
+    click_link "Log Out"
+    assert page.has_link? "Log In"
+    assert_equal nil, @current_user
   end
 end

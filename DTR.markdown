@@ -1,55 +1,56 @@
 # DTR Memo
-# Project: Little Shop
-## Group Member Names: Deb, Kris, Mark
+## Project: Pivot
+### Group Member Names: Thom, Kami, Mark
+
 * What does each group member hope to get out of the project? What are your goals and expectations for the project?
-  * D: I want to work on TDD, confidence, and MVC concepts.
-  * K: I would like to see how the templates work. And I need to work on TDD and rogue testing based on the server and web browser.
-  * M: I want to work on sessions, authentication, and authorization.
+  * M: Challenging, but a good challenge.
+  * K: I like complexity of project, its gonna be harder to conceptualize, but it’ll be good.
+  * T: Excited that we chose lending because it has more math and activerecord and complications on the backend. I also hope to get some styling.
 
 
 * When are group members available to work together? What hours can each group member work individually? Are there any personal time commitments that need to be discussed?
-  * D: I don’t really have any, wednesdays at 4. Lightning talk this week.
-  * K: No, Mentor meetings friday after school, Lightning talk this week.
-  * M: Saturday afternoon. Would want to front load it if we can. Don’t want to work all hours of the night
+  * M: Tonight. Saturday Afternoon. Thursday afternoon SABs
+  * K: Signed up for pairing next monday. Prefer evenings. Split up responsibilities. 6 - 7pm stop time. Split after that.
+  * T: Mondays afterschool - posse. Thursday lunches - posse, friday student electives - posse.
 
 
 * How will group members communicate? How often will communication happen, and how will open lines of communication be maintained?
-  * D: Open to anything, in person, slack, screenhero, 3 people.
-  * K: Ditto
-  * M: Ditto
+  * M: Slack for code snippets. Asynchronous is bad for maintaining relationships.
+  * K: Agree with Thom. Slack is good for technical stuff. I like to check waffle before I do something.
+  * T: I think if theres any problems, talk in person. Slack leads to more problems.
 
 
 * What is each group member’s self-identified strength(s) technically? What does each group member want to improve on technically? How can the team assist with these improvements?
-  * D:I want to improve on TDD, to do well on the final assessment. Im pretty good at understanding styling stuff. Implementing has been a little weird. I don’t feel strong technically
-  * K: I under stand basic crud, but what happens when its nested and connected. What the pet stores pets means? When to pluralize. Nesting routes.
-  * M: I feel like workflow. I feel like I pick concepts up quickly. I jump down rabbit holes fairly often, so just pull me back out.
+  * M: S - Overall picture. W - frustration during stress ful times
+  * K: S - good at basic logic at fundamental level, good at debugging, decent at styling, W - seeing bigger picture, overarching planning, play with the buttons, not best planning strategy. Longer coding tend to check out.
+  * T: S - basic logic of it. Feel strong with ruby and rails. W - new info, reading documentation, I get more pushy if I feel like I’m being ignored.
 
 
 * Which feature(s) does each group member want to work on? Which feature(s) does each group member not want to work on?
-  * D: want - faker gem, mvc
-  * K: want - styling stuff
-  * M: want - i dont care, i’ll fill in the gaps where i have to.
+  * M: I will work on anything that’s there.
+  * K: nothing in particular i don’t want to work on. I can logically figure out what i want. Just the fundamental stuff is what i can grow on.
+  * T: do - i like extracting logic and refactoring and also I think i would lik eot work on activerecord type stuff because i don’t know a ton of activerecord.
 
 
 * What is the agreed upon Git workflow? What project management tool will be used? What is the agreed upon procedure for conducting code reviews before merging into master: who will review pull requests, and when?
-  * D: don’t do you own pull requests, help each other play that role, mixed about waffle thing, nice to have, but someone needs to take the lead, planning meeting and start in waffle for features
-  * K: build steps as we go
-  * M: don’t merge your own pull requests, merge locally before you merge on github. Fix merge conflicts locally. Master is always deployable (all tests passing)
+  * M:  Same.
+  * K: 25 point git workflow. No one does their own pull requests. Making an effor to squash.
+  * T: Thom is going to teach us to rebase.
 
 
 * What is expected of group members when they run into problems implementing a feature?
-  * D: talk to each other. Seek outside help if something is really tough. Verify stuff about the project with instructor.
-  * K: sounds good
-  * M: yeah, just talk to each other. The googlemachine and ask instructors.
+  * M: Communicate & Timbox.
+  * K: Communicate.
+  * T: Timebox it.
 
 
 * How does each group member want feedback (both positive and constructive) to be delivered?
-  * D: just be up front. Slack or side conversation. Transparency is a pretty big deal.
-  * K: up front, honest, kind
-  * M: just tell me to my face.
+  * M: in-person
+  * K: In - person, personal issues, sign of respect to talk about it.
+  * T: In -person, specific thing to say to me, maybe pull me aside. Group united together.
 
 
 * Is there anything else the group should know about personal work/communication styles?
-  * D: sometimes i’ll get quiet and shut down, confidence
-  * K: i say sorry too much.
-  * M: i’m in my head a lot. I sometimes like to just power through things and may sacrifice learning along the way.
+  * M: Sometimes I like to put my headphones on and work.
+  * K: If I seem to checkout, please hit me with something
+  * T: I can get too engaged, I can get really excited and pushy and sometimes you might have to tell me to tone it down.

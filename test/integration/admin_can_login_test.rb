@@ -6,7 +6,7 @@ class AdminCanLoginTest < ActionDispatch::IntegrationTest
     admin = User.first
 
     visit '/login'
-    fill_in "E-Mail", with: admin.email
+    fill_in "Username", with: admin.email
     fill_in "Password", with: "password"
     click_button "Log in"
 

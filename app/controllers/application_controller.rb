@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
   before_action :set_cart
 
+  add_flash_types :success, :info, :warning, :danger
+
   helper_method :current_user, :set_redirect, :current_admin?
 
   def set_redirect

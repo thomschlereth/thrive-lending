@@ -19,7 +19,7 @@ RSpec.feature "User can view all loan requests" do
 
 
         visit '/login'
-        fill_in "E-Mail", with: user1.email
+        fill_in "Username", with: user1.email
         fill_in "Password", with: "password"
         click_on "Log in"
 
