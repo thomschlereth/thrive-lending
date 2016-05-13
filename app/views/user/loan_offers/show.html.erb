@@ -15,4 +15,5 @@
 <li>rate: <%= @loan_offer.rate %>%</li>
 <li>term: <%= @loan_offer.term %> months</li>
 </ul>
-<%= button_to "Delete offer", loan_offer_path(@loan_offer.id), method: :delete %>
+<div class="btn"><%= link_to "Edit Offer", edit_loan_offer_path(@loan_offer) %></div>
+<%= button_to "Delete Offer", loan_offer_path(@loan_offer.id), method: :delete %>

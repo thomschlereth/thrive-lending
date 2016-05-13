@@ -1,0 +1,10 @@
+<h1>All Loan Offers:</h1>
+
+<% @loan_offers.each do |off| %>
+<div class="off-<%= off.id %>">
+	Loan offer # <%= off.id %><br>
+	Amount: <%= off.amount %><br>
+	Interest Rate: <%= off.rate %><br>
+	Term: <%= off.term %><br>
+</div>
+<% end %>

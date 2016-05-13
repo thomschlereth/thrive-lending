@@ -14,7 +14,7 @@ RSpec.feature "User can delete a loan request" do
     request = LoanRequest.last
 
     visit user_loan_request_path(user.username, request.id)
-    click_on "Delete Loan Request"    
+    click_on "Delete Request"    
 
     visit user_loan_requests_path(user.username)
     

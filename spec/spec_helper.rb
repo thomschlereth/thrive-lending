@@ -96,6 +96,12 @@ RSpec.configure do |config|
     end
   end
 
+    def create_loan_offer(num=1, user_id=nil)
+    num.times do
+      LoanOffer.create(amount: rand(100..10000), rate: rand(1.0..20.0), term: rand(1...240), user_id: user_id)
+    end
+  end
+
   # def login_user(user)
   #   visit login_path
   # end

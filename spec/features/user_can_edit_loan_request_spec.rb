@@ -15,7 +15,7 @@ RSpec.feature "User can edit a loan request" do
 
     visit user_loan_request_path(user.username, request.id)
 
-    click_on "Edit Loan Request"    
+    click_on "Edit Request"    
     fill_in "Loan Amount", with: "3000"
     fill_in "Maximum Interest Rate", with: "20"
     click_on "Edit Loan Request"
