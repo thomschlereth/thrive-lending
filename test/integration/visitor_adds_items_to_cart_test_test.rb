@@ -6,9 +6,6 @@ class VisitorAddsItemsToCartTestTest < ActionDispatch::IntegrationTest
     create_items(4)
 
     visit '/items'
-    within ".nav" do
-      assert page.has_content? "0"
-    end
 
     first(:button, "Add to Cart").click
 

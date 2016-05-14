@@ -25,10 +25,10 @@ RSpec.feature "User can view all loan requests" do
 
         visit loan_requests_path
 
-        assert page.has_content? request.amount
-        assert page.has_content? request.max_int_rate
-        assert page.has_content? request1.amount
-        assert page.has_content? request1.max_int_rate
+        expect(page).to have_content request.amount
+        expect(page).to have_content request.max_int_rate
+        expect(page).to have_content request1.amount
+        expect(page).to have_content request1.max_int_rate
 
 
     end

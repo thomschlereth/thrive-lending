@@ -20,10 +20,10 @@ RSpec.feature "User can view all loan offers" do
 
         visit loan_offers_path
 
-        assert page.has_content? offer.amount
-        assert page.has_content? offer.term
-        assert page.has_content? offer1.amount
-        assert page.has_content? offer1.term
+        expect(page).to have_content offer.amount
+        expect(page).to have_content offer.term
+        expect(page).to have_content offer1.amount
+        expect(page).to have_content offer1.term
 
 
     end

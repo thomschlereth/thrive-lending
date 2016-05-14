@@ -15,8 +15,8 @@ RSpec.feature "User can view own loan requests" do
 
     click_on "View My Loan Requests"
 
-    assert page.has_content? ActionController::Base.helpers.number_to_currency(request.amount)
-    assert page.has_content? request.max_int_rate
+    expect(page).to have_content ActionController::Base.helpers.number_to_currency(request.amount)
+    expect(page).to have_content request.max_int_rate
 
   end
 end

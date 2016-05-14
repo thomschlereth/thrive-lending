@@ -14,7 +14,7 @@ RSpec.feature "User can create a loan offer" do
 
     click_on "Create a Loan Offer"
 
-    assert_equal new_loan_offer_path, current_path
+    expect(current_path).to eq(new_loan_offer_path)
 
     fill_in "Amount in Dollars:", with: "3000"
     fill_in "Rate as a Percentage:", with: "20"
@@ -23,10 +23,10 @@ RSpec.feature "User can create a loan offer" do
 
     offer = LoanOffer.last
 
-    assert_equal "/#{user.username}/loan_offers/#{offer.id}", current_path
-    assert page.has_content? ActionController::Base.helpers.number_to_currency(offer.amount)
-    assert page.has_content? offer.rate
-    assert page.has_content? offer.term
+    expect(current_path).to eq("/#{user.username}/loan_offers/#{offer.id}")
+    expect(page).to have_content ActionController::Base.helpers.number_to_currency(offer.amount)
+    expect(page).to have_content offer.rate
+    expect(page).to have_content offer.term
 
   end
 end

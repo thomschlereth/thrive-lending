@@ -16,9 +16,9 @@ RSpec.feature "User can view own loan offers" do
     visit '/dashboard'
     click_on "View My Loan Offers"
 
-    assert page.has_content? ActionController::Base.helpers.number_to_currency(offer.amount)
-    assert page.has_content? offer.rate
-    assert page.has_content? offer.term
+    expect(page).to have_content ActionController::Base.helpers.number_to_currency(offer.amount)
+    expect(page).to have_content offer.rate
+    expect(page).to have_content offer.term
 
   end
 end

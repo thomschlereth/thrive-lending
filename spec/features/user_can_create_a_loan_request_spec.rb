@@ -21,9 +21,9 @@ RSpec.feature "User can create a loan request" do
     click_on "Let's Go!"
 
     request = LoanRequest.last
-    assert_equal "/#{user.username}/loan_requests/#{request.id}", current_path
-    assert page.has_content? ActionController::Base.helpers.number_to_currency(request.amount)
-    assert page.has_content? request.max_int_rate
+    expect(current_path).to eq("/#{user.username}/loan_requests/#{request.id}")
+    expect(page).to have_content ActionController::Base.helpers.number_to_currency(request.amount)
+    expect(page).to have_content request.max_int_rate
 
   end
 end

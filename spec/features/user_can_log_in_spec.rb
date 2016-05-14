@@ -37,7 +37,7 @@ RSpec.feature "User can login" do
     fill_in "Password", with: user.password
     click_on "Log in"
 
-    assert_equal login_path, current_path
+    expect(current_path).to eq(login_path)
     expect(page).to have_content "Invalid Credentials"
 
   end
@@ -51,13 +51,13 @@ RSpec.feature "User can login" do
     fill_in "Password", with: "password"
     click_on "Log in"
 
-    assert page.has_content? "Hello, #{user.first_name}"
+    expect(page).to have_content "Hello, #{user.first_name}"
     
     click_on "Log Out"
 
-    assert_equal root_path, current_path
-    assert page.has_link? "Log In"
-    refute page.has_button? "Log Out"
+   expect(current_path).to eq(root_path)
+   expect(page).to have_link "Log In"
+    expect(page).to have_no_button "Log Out"
     end
 
 end

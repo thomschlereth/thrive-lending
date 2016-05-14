@@ -1,13 +1,9 @@
 class CartItem < SimpleDelegator
   attr_reader :item, :quantity
 
-  def initialize(id, qty)
-    @item = Item.find_by(id: id)
-    @quantity = qty
+  def initialize(id)
+    @item = LoanRequest.find_by(id: id)
     super(@item)
   end
 
-  def subtotal
-    item.price * quantity
-  end
 end
