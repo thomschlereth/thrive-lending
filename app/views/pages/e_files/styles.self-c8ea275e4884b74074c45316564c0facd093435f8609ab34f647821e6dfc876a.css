@@ -262,7 +262,7 @@ p a {
 }
 
 p a:hover {
-	color: #555;
+	color: #669900;
 }
 
 input {
@@ -363,8 +363,5 @@ input[type=submit]:active {
 	margin-bottom: 60px;
 }
 
+
 /*LOGIN FORM END*/
-a:hover, a:focus {
-  color: #669900;
-  text-decoration: none;
-}

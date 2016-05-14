@@ -11,7 +11,7 @@ before(:each) do
 
     scenario "user cannot add their own loan request to their cart" do
         visit loan_requests_path
-        click_on "Add to Cart"
+        click_on "Add To Cart"
 
         expect(page).to have_content "You cannot accept your own loan."
     end

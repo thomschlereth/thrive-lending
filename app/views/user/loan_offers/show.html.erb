@@ -18,8 +18,12 @@
             <h4 class="list-group-item-heading col-md-6">Term:<br /><%= @loan_offer.term %> Months</h4>
             <h4 class="list-group-item-heading col-md-6">Estimated Monthly Payments:<br />$183.40</h4>
           </div>
-          <%= button_to "Delete offer", loan_offer_path(@loan_offer.id), method: :delete %>
-          <%= link_to "Edit offer", edit_loan_offer_path(@loan_offer.id), class:"link-button" %>
+          <% if current_user == @user %>
+            <%= button_to "Delete offer", loan_offer_path(@loan_offer.id), method: :delete %>
+            <%= link_to "Edit offer", edit_loan_offer_path(@loan_offer.id), class:"link-button" %>
+          <% else %>
+            <%= link_to "Add To Cart", cart_items_path(item_id: @loan_offer.id), method: 'post', class:"link-button" %>
+          <% end %>
           <%= link_to "Back", :back, class:"link-button" %>
         </div>
 

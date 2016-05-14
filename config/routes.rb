@@ -51,8 +51,9 @@ Rails.application.routes.draw do
   get ':username/loan_offers', to: 'user/loan_offers#index', as: 'user_loan_offers'
   get ':username/loan_offers/:id', to: 'user/loan_offers#show', as: 'user_loan_offer'
 
-  get "/:category", to: "categories#show"
-  # get "/*page", to: "errors#not_found"
 
   get "/viewloans", to: "pages#viewloans"
+  get "/createloans", to: "pages#createloans"
+  get "/:category", to: "categories#show"
+  # get "/*page", to: "errors#not_found"
 end

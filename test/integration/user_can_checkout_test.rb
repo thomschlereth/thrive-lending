@@ -6,7 +6,7 @@ class UserCanCheckoutTest < ActionDispatch::IntegrationTest
     create_items
     create_user
     visit "/items"
-    click_on "Add to Cart"
+    click_on "Add To Cart"
 
     find(:xpath, "//a[@href='/cart']").click
     click_on "Login"

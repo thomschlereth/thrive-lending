@@ -13,7 +13,8 @@ RSpec.feature "User can add loan requests to cart" do
         request = LoanRequest.last
 
         visit "/loan_requests"
-        click_on "Add to Cart"
+        click_on "Add To Cart"
+
         visit cart_path
 
         expect(page).to have_content ActionController::Base.helpers.number_to_currency(request.amount)
@@ -25,8 +26,8 @@ RSpec.feature "User can add loan requests to cart" do
 
         visit loan_requests_path
 
-        click_on "Add to Cart"
-        click_on "Add to Cart"
+        click_on "Add To Cart"
+        click_on "Add To Cart"
 
         expect(page).to have_content "Loan is already in cart."
     end

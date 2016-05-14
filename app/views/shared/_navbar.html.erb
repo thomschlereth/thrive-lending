@@ -2,7 +2,7 @@
   <div class="container">
     <%= link_to (image_tag("thrivelogo", height: "100px")), root_path %>
       <ul class="nav navbar-nav navbar-right navbar-collapse collapse">
-        <li><%= link_to "View Loans", "/viewloans/" %></li>
+        <li><%= link_to "View Loans", "/viewloans" %></li>
         <li><a href="#">Create Loan</a></li>
         <% if current_user %>
           <li><%= link_to "Log Out", logout_path %></li>

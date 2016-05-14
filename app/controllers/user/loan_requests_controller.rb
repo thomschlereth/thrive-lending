@@ -6,8 +6,8 @@ class User::LoanRequestsController < User::BaseController
   end
 
   def show
-    @user = current_user
-    @loan_request = current_user.loan_requests.find(params[:id])
+    @user = User.find_by(username: params[:username])
+    @loan_request = @user.loan_requests.find_by(id: params[:id])
   end
 
   private
