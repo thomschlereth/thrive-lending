@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   get    '/:username/loan_requests/', to: 'user/loan_requests#index', as: 'user_loan_requests'
   get    '/:username/loan_requests/:id/edit', to: 'user/loan_requests#edit', as: 'edit_user_loan_request'
   get    '/:username/loan_requests/:id', to: 'user/loan_requests#show', as: 'user_loan_request'
- 
+
 
 
   # namespace admin, resources items, resources users, only show
@@ -42,12 +42,12 @@ Rails.application.routes.draw do
   get "/dashboard", to: "users#show", as: 'dashboard'
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
-  delete "/logout", to: "sessions#destroy"
+  get "/logout", to: "sessions#destroy"
   get "/cart", to: "cart_items#index"
   get "/admin/dashboard", to: "admin/users#show"
 
   resources :loan_offers, except: [:show]
-  
+
   get ':username/loan_offers', to: 'user/loan_offers#index', as: 'user_loan_offers'
   get ':username/loan_offers/:id', to: 'user/loan_offers#show', as: 'user_loan_offer'
 

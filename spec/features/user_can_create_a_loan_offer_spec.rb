@@ -24,7 +24,7 @@ RSpec.feature "User can create a loan offer" do
     offer = LoanOffer.last
 
     assert_equal "/#{user.username}/loan_offers/#{offer.id}", current_path
-    assert page.has_content? offer.amount
+    assert page.has_content? ActionController::Base.helpers.number_to_currency(offer.amount)
     assert page.has_content? offer.rate
     assert page.has_content? offer.term
 

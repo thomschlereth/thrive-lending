@@ -5,7 +5,7 @@ class LoanOffersController < ApplicationController
   end
 
   def new
-    if current_user && !current_admin?
+    if current_user
       @loan_offer = LoanOffer.new
     else
       redirect_to login_path
@@ -15,7 +15,7 @@ class LoanOffersController < ApplicationController
   def create
     loan_offer = LoanOffer.new(loan_offer_params)
     if current_user.loan_offers << loan_offer
-      redirect_to user_loan_offer_path(current_user.username, loan_offer.id)
+      redirect_to user_loan_offer_path(current_user.username, loan_offer.id), success: "yay!"
     else
       flash[:error] = loan_offer.errors.full_messages.join(", ")
       redirect_to new_loan_offer_path

@@ -1,7 +1,20 @@
-<h1>Edit Loan Request:</h1>
-
-<%= form_for @loan_request do |f|%>
-  <%= f.text_field :amount, placeholder: "Loan Amount" %>
-  <%= f.text_field :max_int_rate, placeholder: "Maximum Interest Rate" %>
-  <%= f.submit "Edit Loan Request" %>
-<% end %>
+<div class="mainbody">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2 row">
+        <h2>Do you need to update the details of your loan request?</h2>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2 col-md-offset-5">
+      <%= form_for @loan_request do |f| %>
+        <%= f.label :amount, "Amount in Dollars:" %>
+        <%= f.text_field :amount, class:"form-control" %><br />
+        <%= f.label :max_int_rate, "Max Interest Rate: " %>
+        <%= f.text_field :max_int_rate, class:"form-control" %><br />
+        <%= f.submit "That was easy" %>
+      <% end %>
+    </div>
+  </div>
+</div>

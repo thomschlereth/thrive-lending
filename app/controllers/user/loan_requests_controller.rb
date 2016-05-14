@@ -2,6 +2,7 @@ class User::LoanRequestsController < User::BaseController
 
   def index
     @user = current_user
+    @loan_requests = @user.loan_requests
   end
 
   def show

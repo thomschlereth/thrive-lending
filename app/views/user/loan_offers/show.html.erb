@@ -2,18 +2,28 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
-        <h2><%= "#{@user.first_name} #{@user.last_name}" %></h2>
+        <div class="list-group">
+          <div class="list-group-item row">
+            <h4 class="list-group-item-heading">Loan Offer ID #<%= @loan_offer.id %></h4>
+          </div>
+          <div class="list-group-item row">
+            <h4 class="list-group-item-heading col-md-6">Amount:<br /> <%= number_to_currency(@loan_offer.amount) %></h4>
+            <h4 class="list-group-item-heading col-md-6">Interest Earning Potential: $1,147.50</h4>
+          </div>
+          <div class="list-group-item row">
+            <h4 class="list-group-item-heading col-md-6">APR:<br /><%= @loan_offer.rate %>%</h4>
+            <h4 class="list-group-item-heading col-md-6">Effective Interest:<br />17.35%</h4>
+          </div>
+          <div class="list-group-item row">
+            <h4 class="list-group-item-heading col-md-6">Term:<br /><%= @loan_offer.term %> Months</h4>
+            <h4 class="list-group-item-heading col-md-6">Estimated Monthly Payments:<br />$183.40</h4>
+          </div>
+          <%= button_to "Delete offer", loan_offer_path(@loan_offer.id), method: :delete %>
+          <%= link_to "Edit offer", edit_loan_offer_path(@loan_offer.id), class:"link-button" %>
+          <%= link_to "Back", :back, class:"link-button" %>
+        </div>
+
       </div>
     </div>
-
   </div>
 </div>
-
-
-<ul>
-<li>amount: $<%= @loan_offer.amount %></li>
-<li>rate: <%= @loan_offer.rate %>%</li>
-<li>term: <%= @loan_offer.term %> months</li>
-</ul>
-<div class="btn"><%= link_to "Edit Offer", edit_loan_offer_path(@loan_offer) %></div>
-<%= button_to "Delete Offer", loan_offer_path(@loan_offer.id), method: :delete %>

@@ -15,15 +15,15 @@ RSpec.feature "User can edit a loan request" do
 
     visit user_loan_request_path(user.username, request.id)
 
-    click_on "Edit Request"    
-    fill_in "Loan Amount", with: "3000"
-    fill_in "Maximum Interest Rate", with: "20"
-    click_on "Edit Loan Request"
+    click_on "Edit request"
+    fill_in "Amount in Dollars:", with: "3000"
+    fill_in "Max Interest Rate:", with: "20"
+    click_on "That was easy"
 
     request = LoanRequest.last
-    
+
     expect(current_path).to eq(user_loan_request_path(user.username, request.id))
-    expect(page).to have_content(request.amount)
+    expect(page).to have_content(ActionController::Base.helpers.number_to_currency(request.amount))
     expect(page).to have_content(request.max_int_rate)
   end
 end

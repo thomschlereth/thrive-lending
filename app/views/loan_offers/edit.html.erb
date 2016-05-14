@@ -1,13 +1,22 @@
-<h2>Do you need to update the terms of the loan you're offering?</h2>
-
-<%= form_for @loan_offer do |f| %>
-  <%= f.label "Amount $" %>
-  <%= f.text_field :amount, class:"form-control"  %><br />
-  <%= f.label "Rate" %>
-  <%= f.text_field :rate, class:"form-control"  %>
-  <%= f.label "%" %><br />
-  <%= f.label "Term" %>
-  <%= f.text_field :term, class:"form-control"  %>
-  <%= f.label "Months" %><br />
-  <%= f.submit "That Was Easy", class:"btn btn-primary"%>
-<% end %>
+<div class="mainbody">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h2>Do you need to update the details of the loan you're offering?</h2>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2 col-md-offset-5">
+      <%= form_for @loan_offer do |f| %>
+        <%= f.label "Amount in Dollars:" %><br />
+        <%= f.text_field :amount, class:"form-control"  %><br />
+        <%= f.label "Rate as a Percentage:" %><br />
+        <%= f.text_field :rate, class:"form-control"  %><br />
+        <%= f.label "Term in Months:" %><br />
+        <%= f.text_field :term, class:"form-control"  %><br />
+        <%= f.submit "That was easy" %>
+      <% end %>
+    </div>
+  </div>
+</div>

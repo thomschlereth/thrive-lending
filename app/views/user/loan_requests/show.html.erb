@@ -1,6 +1,28 @@
-<h1>Loan Request:</h1>
-Amount: <%= @loan_request.amount %><br>
-Max Interest Rate: <%= @loan_request.max_int_rate %><br>
-
-<div class="btn"><%= link_to "Edit Request", edit_loan_request_path(@loan_request) %></div>
-<div class="btn"><%= link_to "Delete Request", loan_request_path(@loan_request), method: :delete %></div>
+<div class="mainbody">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="list-group">
+          <div class="list-group-item row">
+            <h4 class="list-group-item-heading">Loan Request ID #<%= @loan_request.id %></h4>
+          </div>
+          <div class="list-group-item row">
+            <h4 class="list-group-item-heading col-md-6">Amount:<br /> <%= number_to_currency(@loan_request.amount) %></h4>
+            <h4 class="list-group-item-heading col-md-6">Interest Earning Potential: $1,147.50</h4>
+          </div>
+          <div class="list-group-item row">
+            <h4 class="list-group-item-heading col-md-6">APR:<br /><%= @loan_request.max_int_rate %>%</h4>
+            <h4 class="list-group-item-heading col-md-6">Effective Interest:<br />17.35%</h4>
+          </div>
+          <div class="list-group-item row">
+            <h4 class="list-group-item-heading col-md-6"></h4>
+            <h4 class="list-group-item-heading col-md-6">Estimated Monthly Payments:<br />$183.40</h4>
+          </div>
+          <%= button_to "Delete request", loan_request_path(@loan_request.id), method: :delete %>
+          <%= link_to "Edit request", edit_loan_request_path(@loan_request.id), class:"link-button" %>
+          <%= link_to "Back", :back, class:"link-button" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

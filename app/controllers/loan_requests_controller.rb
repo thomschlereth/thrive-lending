@@ -36,7 +36,7 @@
 
   def destroy
     if current_user.loan_requests.delete(params[:id])
-      redirect_to dashboard_path(current_user.id)
+      redirect_to user_loan_requests_path(current_user.username), danger: "Loan Request Deleted!"  
     else
 
     end
