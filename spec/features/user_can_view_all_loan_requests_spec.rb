@@ -28,6 +28,6 @@ RSpec.feature "User can view all loan requests" do
         expect(page).to have_content ActionController::Base.helpers.number_to_currency(request.amount)
         expect(page).to have_content request.max_int_rate
         expect(page).to have_content ActionController::Base.helpers.number_to_currency(request1.amount)
-        expect(page).to have_content request1.max_int_rate
+        expect(page).to have_content request1.max_int_rates
     end
 end

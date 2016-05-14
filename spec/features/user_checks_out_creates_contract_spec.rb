@@ -1,0 +1,31 @@
+require "rails_helper"
+
+RSpec.feature "User checkout creates contract" do
+
+     before(:each) do
+        create_user(2)
+        owner = User.last
+        create_loan_request(1, owner.id)
+        ApplicationController.any_instance.stub(:current_user).and_return(User.first)
+    end
+
+    scenario "existing user can checkout cart" do
+        user = User.first
+        visit loan_requests_path
+        click_on "Add to Cart"
+        visit cart_path
+        click_on "Place Order"
+
+        expect(current_path).to eq(new_contract_path)
+
+        click_button "Submit"
+
+        contract = Contract.last
+
+        expect(current_path).to eq(user_contracts_path(user.username))
+        expect(page).to have_content contract.loan_request.amount
+        expect(page).to have_content contract.loan_request.term
+        expect(page).to have_content contract.loan_request.rate
+        expect(page).to have_content "Pending"
+    end
+end

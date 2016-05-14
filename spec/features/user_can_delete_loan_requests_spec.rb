@@ -19,6 +19,6 @@ RSpec.feature "User can delete a loan request" do
     visit user_loan_requests_path(user.username)
 
     expect(page).to have_no_content(request.amount)
-    expect(page).to have_no_content(request.max_int_rate)
+    expect(page).to have_no_content(request.rate)
   end
 end

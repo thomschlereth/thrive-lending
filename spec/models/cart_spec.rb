@@ -34,6 +34,7 @@ RSpec.describe Cart, type: :model do
     create_loan_request(2)
     item1 = LoanRequest.first
     item2 = LoanRequest.last
+
     cart = Cart.new([item1.id, item2.id])
     expected = (item1.amount + item2.amount)
 

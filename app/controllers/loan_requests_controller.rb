@@ -11,6 +11,7 @@
       redirect_to user_loan_request_path(id: @loan_request.id, username: current_user.username)
     else
       flash[:now] = "Invalid Loan Request"
+      render :new
     end
   end
 
@@ -46,7 +47,7 @@
     private
 
   def loan_request_params
-    params.require(:loan_request).permit(:amount, :max_int_rate)
+    params.require(:loan_request).permit(:amount, :rate, :term)
   end
 
 

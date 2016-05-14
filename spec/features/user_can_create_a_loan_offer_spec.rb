@@ -7,7 +7,7 @@ RSpec.feature "User can create a loan offer" do
         ApplicationController.any_instance.stub(:current_user).and_return(User.first)
     end
 
-  scenario "existing user can create loan offer" do
+  scenario "user checks out loan requests" do
     user = User.first
 
     visit dashboard_path(user)

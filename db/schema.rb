@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160513040912) do
+ActiveRecord::Schema.define(version: 20160514210318) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,9 +25,9 @@ ActiveRecord::Schema.define(version: 20160513040912) do
     t.integer  "borrower_id"
     t.integer  "loan_request_id"
     t.integer  "loan_offer_id"
-    t.boolean  "approved"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string   "status",          default: "Pending"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   add_index "contracts", ["borrower_id"], name: "index_contracts_on_borrower_id", using: :btree
@@ -63,9 +63,10 @@ ActiveRecord::Schema.define(version: 20160513040912) do
   create_table "loan_requests", force: :cascade do |t|
     t.integer  "user_id"
     t.decimal  "amount"
-    t.decimal  "max_int_rate"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.decimal  "rate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "term"
   end
 
   add_index "loan_requests", ["user_id"], name: "index_loan_requests_on_user_id", using: :btree

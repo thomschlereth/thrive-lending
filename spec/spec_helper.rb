@@ -93,7 +93,7 @@ RSpec.configure do |config|
 
   def create_loan_request(num=1, user_id=nil)
     num.times do
-      LoanRequest.create(amount: rand(100..10000), max_int_rate: rand(1.0..20.0), user_id: user_id)
+      LoanRequest.create(amount: rand(100..10000), rate: rand(1.0..20.0), term: rand(6..72), user_id: user_id)
     end
   end
 
@@ -105,9 +105,8 @@ RSpec.configure do |config|
 
   def create_contract(num = 1, data)
     num.times do
-      Contract.create(lender_id: data[:l_id], borrower_id: data[:b_id], loan_request_id: data[:l_r_id], loan_offer_id: data[:l_o_id], approved: data[:approved])
+      Contract.create(lender_id: data[:l_id], borrower_id: data[:b_id], loan_request_id: data[:l_r_id], loan_offer_id: data[:l_o_id], status: data[:status])
     end
   end
-
 
 end

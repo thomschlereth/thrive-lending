@@ -13,7 +13,7 @@ class User::LoanRequestsController < User::BaseController
   private
 
   def loan_request_params
-    params.require(:loan_request).permit(:amount, :max_int_rate)
+    params.require(:loan_request).permit(:amount, :rate)
   end
 
 end

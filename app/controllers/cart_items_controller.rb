@@ -2,6 +2,7 @@ class CartItemsController < ApplicationController
 
   def create
     set_redirect
+    
     item = LoanRequest.find(params[:item_id])
     if @cart.contents.include?(item.id.to_s)
       flash[:warning] = "Loan is already in cart."

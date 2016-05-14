@@ -10,8 +10,10 @@
         <%= form_for @loan_request do |f|%>
           <%= f.label :amount, "Amount in Dollars:" %><br />
           <%= f.text_field :amount, placeholder: "10000", class:"form-control" %><br />
-          <%= f.label :max_int_rate, "Max Interest Rate:" %><br />
-          <%= f.text_field :max_int_rate, placeholder: "7.99", class:"form-control" %><br />
+          <%= f.label :rate, "Rate:" %><br />
+          <%= f.text_field :rate, placeholder: "7.99", class:"form-control" %><br />
+          <%= f.label :term, "Term:" %><br />
+          <%= f.text_field :term, placeholder: "18", class:"form-control" %><br />
           <%= f.submit "Let's Go!" %>
         <% end %>
       </div>

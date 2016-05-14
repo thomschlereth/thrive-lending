@@ -18,7 +18,7 @@ RSpec.feature "User can add loan requests to cart" do
         visit cart_path
 
         expect(page).to have_content ActionController::Base.helpers.number_to_currency(request.amount)
-        expect(page).to have_content request.max_int_rate
+        expect(page).to have_content request.rate
     end
 
     scenario "user cannot add a loan request to their cart twice" do

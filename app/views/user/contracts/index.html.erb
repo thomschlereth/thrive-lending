@@ -1,0 +1,8 @@
+<% @l_contracts.each do |contract| %>
+Lender: <%= contract.lender.first_name + " " + contract.lender.last_name %><br>  
+Borrower: <%= contract.borrower.first_name + " " + contract.borrower.last_name %><br>  
+Amount: <%= contract.loan_request.amount %><br>
+Term: <%= contract.loan_request.term %> Months<br>
+Rate: <%= contract.loan_request.rate %>%<br>
+Status: <%= contract.status %><br>
+<% end %>

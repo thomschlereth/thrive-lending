@@ -12,7 +12,6 @@ class Cart
   end
 
   def add_item(item_id)
-
     contents << item_id.to_s
   end
 

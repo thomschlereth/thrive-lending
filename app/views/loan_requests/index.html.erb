@@ -20,11 +20,11 @@
 							</div>
 							<div class="list-group-item">
 								<h4 class="list-group-item-heading">Interest Rate:</h4>
-								<p class="list-group-item-text"><%# loan.rate %></p>
+								<p class="list-group-item-text"><%= loan.rate %></p>
 							</div>
 							<div class="list-group-item">
 								<h4 class="list-group-item-heading">Term:</h4>
-								<p class="list-group-item-text"><%# loan.term %> months</p>
+								<p class="list-group-item-text"><%= loan.term %> months</p>
 							</div>
 							<div class="list-group-item">
 								<%= link_to "View Details", user_loan_request_path(username: loan.user.username, id: loan) %>

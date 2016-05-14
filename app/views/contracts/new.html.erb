@@ -1,0 +1,9 @@
+<div class="cart-box">
+  <% @loan_requests.each do |lr| %>
+  Borrower: <%= lr.user.first_name + " "  + lr.user.last_name %><br>  
+  Amount: <%= lr.amount %><br>
+  Term: <%= lr.term %> Months<br>
+  Rate: <%= lr.rate %>%<br><br>
+<% end %>
+<%= button_to "Submit", contracts_path, method: 'post' %>
+</div>

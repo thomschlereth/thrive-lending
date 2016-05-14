@@ -16,7 +16,8 @@
 							<%= button_to "X", cart_item_path(item), class: "btn btn-warning btn-xs", method: :delete %>
 						</div>
 						<h4>Loan Amount: <%= number_to_currency(item.amount) %></h4>
-						<h4>Maximum Interest Rate: <%= item.max_int_rate %>% </h4>
+						<h4>Rate: <%= item.rate %>% </h4>
+						<h4>Term: <%= item.term %> Months</h4>
 					</div>
 				</td>
 			</tr>
@@ -38,10 +39,10 @@
 			<% if current_user %>
 			<% if @cart.contents.empty? %>
 			<% else %>
-			<%= button_to "Place Order", orders_path, class: "order" %>
+			<%= button_to "Place Order", new_contract_path, class: "contract", method: "get" %>
 			<% end %>
 			<% else %>
-			<%= button_to "Login to Checkout", login_path, method: :get, class:"order" %>
+			<%= button_to "Login to Checkout", login_path, method: :get, class:"contract" %>
 			<% end %>
 
 		</div>

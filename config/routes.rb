@@ -16,10 +16,13 @@ Rails.application.routes.draw do
   get '/cart_items/:id', to: 'cart_items#edit', as: 'edit_cart_item'
 
   # resources :orders, only: [:index, :create]
-  get '/orders', to: 'orders#index', as: 'orders'
-  post '/orders/', to: 'orders#create'
+  # get '/orders', to: 'orders#index', as: 'orders'
+  # post '/orders/', to: 'orders#create'
+  # get "/order", to: "orders#show"
 
   resources :loan_requests, only: [:index, :create, :new, :edit, :update, :destroy]
+  post '/contracts', to: 'contracts#create', as: 'contracts'
+  resources :contracts, only: [:new]
 
 
 
@@ -38,7 +41,6 @@ Rails.application.routes.draw do
   patch  '/admin/items/:id', to: 'admin/items#update'
   delete '/admin/items/:id', to: 'admin/items#destroy'
   get    '/admin/users/:id', to: 'admin/users#show', as: 'admin_user'
-  get "/order", to: "orders#show"
   get "/dashboard", to: "users#show", as: 'dashboard'
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
@@ -53,6 +55,9 @@ Rails.application.routes.draw do
 
 
   get "/viewloans", to: "pages#viewloans"
+
+  get '/:current_username/contracts', to: 'user/contracts#index', as: 'user_contracts'  
+
   get "/createloans", to: "pages#createloans"
   get "/:category", to: "categories#show"
   # get "/*page", to: "errors#not_found"

@@ -17,13 +17,13 @@ RSpec.feature "User can create a loan request" do
     assert_equal new_loan_request_path, current_path
 
     fill_in "Amount in Dollars:", with: "3000"
-    fill_in "Max Interest Rate", with: "20"
+    fill_in "Rate", with: "20"
+    fill_in "Term", with: "36"
     click_on "Let's Go!"
 
     request = LoanRequest.last
     expect(current_path).to eq("/#{user.username}/loan_requests/#{request.id}")
     expect(page).to have_content ActionController::Base.helpers.number_to_currency(request.amount)
-    expect(page).to have_content request.max_int_rate
-
+    expect(page).to have_content request.rate
   end
 end
