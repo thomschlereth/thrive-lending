@@ -12,7 +12,7 @@ RSpec.feature "User checkout creates contract" do
     scenario "existing user can checkout cart" do
         user = User.first
         visit loan_requests_path
-        click_on "Add to Cart"
+        click_on "Add To Cart"
         visit cart_path
         click_on "Place Order"
 
