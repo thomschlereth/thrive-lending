@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160512151548) do
+ActiveRecord::Schema.define(version: 20160513040912) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,20 @@ ActiveRecord::Schema.define(version: 20160512151548) do
   create_table "categories", force: :cascade do |t|
     t.string "name"
   end
+
+  create_table "contracts", force: :cascade do |t|
+    t.integer  "lender_id"
+    t.integer  "borrower_id"
+    t.integer  "loan_request_id"
+    t.integer  "loan_offer_id"
+    t.boolean  "approved"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "contracts", ["borrower_id"], name: "index_contracts_on_borrower_id", using: :btree
+  add_index "contracts", ["lender_id", "borrower_id"], name: "index_contracts_on_lender_id_and_borrower_id", using: :btree
+  add_index "contracts", ["lender_id"], name: "index_contracts_on_lender_id", using: :btree
 
   create_table "items", force: :cascade do |t|
     t.string   "name"

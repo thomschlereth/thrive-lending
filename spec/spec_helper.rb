@@ -76,7 +76,7 @@ RSpec.configure do |config|
 
   def create_user(num = 1, role = 0)
     num.times do
-      first_name = Faker::Name.first_name      
+      first_name = Faker::Name.first_name
       User.create(first_name: first_name,
       last_name: Faker::Name.last_name,
       email: Faker::Internet.safe_email,
@@ -88,6 +88,7 @@ RSpec.configure do |config|
       username: first_name.downcase,
       role: role)
     end
+    User.all
   end
 
   def create_loan_request(num=1, user_id=nil)
@@ -102,10 +103,11 @@ RSpec.configure do |config|
     end
   end
 
-  # def login_user(user)
-  #   visit login_path
-  # end
-
+  def create_contract(num = 1, data)
+    num.times do
+      Contract.create(lender_id: data[:l_id], borrower_id: data[:b_id], loan_request_id: data[:l_r_id], loan_offer_id: data[:l_o_id], approved: data[:approved])
+    end
+  end
 
 
 end

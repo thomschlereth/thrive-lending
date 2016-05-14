@@ -3,6 +3,12 @@ class User < ActiveRecord::Base
   has_many :loan_offers
   has_many :orders
   has_many :loan_requests
+  has_many :lent, class_name: "Contract",
+                                  foreign_key: "lender_id"
+  has_many :borrowed, class_name: "Contract",
+                                  foreign_key: "borrower_id"
+  has_many :borrowers, through: :lent, source: :borrower
+  has_many :lenders, through: :borrowed, source: :lender
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :first_name,     presence: true
