@@ -4,7 +4,7 @@ RSpec.feature "User can view own loan offers" do
    
    before(:each) do
         create_user(2)
-        ApplicationController.any_instance.stub(:current_user).and_return(User.first)
+        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(User.first)
     end
 
   scenario "existing user can view their loan offers" do
