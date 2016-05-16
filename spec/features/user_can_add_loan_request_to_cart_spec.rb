@@ -6,8 +6,8 @@ RSpec.feature "User can add loan requests to cart" do
         create_user(2)
         owner = User.last
         create_loan_request(1, owner.id)
-        # ApplicationController.any_instance.stub(:current_user).and_return(User.first)
-        # allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(User.first)
+        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(User.first)
+
     end
 
     scenario "user can create add a loan request to their cart" do
@@ -33,3 +33,4 @@ RSpec.feature "User can add loan requests to cart" do
         expect(page).to have_content "Loan is already in cart."
     end
 end
+        
