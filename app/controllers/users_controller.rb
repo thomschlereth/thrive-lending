@@ -18,8 +18,39 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = current_user
-    @orders = @user.orders
+    if current_admin?
+      @user = User.find(params[:id])
+      @orders = @user.orders
+    else
+      render :dashboard
+    end
+  end
+
+  def index
+    @users = User.where(role: 0)
+  end
+
+  def destroy
+    if current_user && !current_admin?
+      current_user.destroy
+      redirect_to new_user_path
+    elsif current_admin?
+      User.find(params[:id]).destroy
+      redirect_to users_path
+    else
+      flash[:message] = "You don't have permission"
+      redirect_to "/"
+    end
+  end
+
+  def dashboard
+    if current_user
+      redirect_to admin_dashboard_path if current_admin?
+      @user = current_user
+      @orders = @user.orders
+    else
+      redirect_to login_path
+    end
   end
 
   private

@@ -1,7 +1,7 @@
 <div class="cart">
   <div class="container">
     <div class="cart-top">
-      <h1>Welcome Administrator : <%= @user.first_name %></h1>
+      <h1>Welcome Administrator: <%= @user.first_name %></h1>
     </div>
     <div class="cart-conclusion">
       <table width="100%">
@@ -12,22 +12,12 @@
         </tr>
         <tr>
           <td>
-            <%= link_to "Create New Items", new_admin_item_path %>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <%= link_to "View All Items", admin_items_path %>
-          </td>
-        </tr>
-        <tr>
-          <td>
             <%= link_to "View All Orders - Coming Soon!", "#" %>
           </td>
         </tr>
         <tr>
           <td>
-            <%= link_to "View All Users - Coming Soon!", "#" %>
+            <%= link_to "View All Users", users_path %>
           </td>
         </tr>
         <tr>
