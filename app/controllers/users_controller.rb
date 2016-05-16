@@ -19,8 +19,7 @@ class UsersController < ApplicationController
 
   def show
     if current_admin?
-      @user = User.find(params[:id])
-      @orders = @user.orders
+      @user = User.find_by(username: params[:username])
     else
       render :dashboard
     end

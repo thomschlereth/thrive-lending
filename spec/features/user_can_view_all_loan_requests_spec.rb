@@ -3,8 +3,8 @@ require "rails_helper"
 RSpec.feature "User can view all loan requests" do
 
     before(:each) do
-        create_user(2)
-        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(User.first)
+      create_user(2)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(User.first)
     end
 
     scenario "existing user can create loan request" do

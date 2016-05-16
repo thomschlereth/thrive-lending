@@ -2,12 +2,12 @@ class SessionsController < ApplicationController
 
   def new
     set_redirect
+    redirect_to dashboard_path(current_user.id) if current_user
   end
 
   def create
     user = User.find_by(username: params[:session][:username])
     if user && user.authenticate(params[:session][:password])
-      # session[:user_id] = user.id
       session[:username] = user.username
       if current_admin?
         redirect_to admin_dashboard_path

@@ -13,7 +13,7 @@ RSpec.feature "Logged in admin can view user" do
 
     click_link(@user1.username)
 
-    expect(current_path).to eq(user_path(@user1.id))
+    expect(current_path).to eq(user_path(@user1.username))
     expect(page).to_not have_link("Create a Loan Request")
     expect(page).to_not have_link("Create a Loan Offer")
     expect(page).to have_link("View #{@user1.first_name}'s Loan Requests")

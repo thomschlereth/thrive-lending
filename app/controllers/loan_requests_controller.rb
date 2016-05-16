@@ -1,11 +1,10 @@
- class LoanRequestsController < ApplicationController
+class LoanRequestsController < ApplicationController
 
-   def index
-     @loan_requests = LoanRequest.all
-   end
+  def index
+    @loan_requests = LoanRequest.all
+  end
 
-
- def new
+  def new
     @loan_request = LoanRequest.new
   end
 
@@ -37,15 +36,21 @@
   end
 
   def destroy
-    if current_user.loan_requests.delete(params[:id])
+    if current_user && !current_admin?
+      current_user.loan_requests.delete(params[:id])
       redirect_to user_loan_requests_path(current_user.username), danger: "Loan Request Deleted!"
+    elsif current_admin?
+      loan_request = LoanRequest.find(params[:id])
+      user = loan_request.user
+      loan_request.destroy
+      redirect_to user_path(user.username)
     else
-
+      flash[:message] = "Access Denied"
+      redirect_to "/"
     end
   end
 
-
-    private
+  private
 
   def loan_request_params
     params.require(:loan_request).permit(:amount, :rate, :term)

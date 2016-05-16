@@ -21,6 +21,8 @@
           <% if current_user == @user %>
             <%= button_to "Delete request", loan_request_path(@loan_request.id), method: :delete %>
             <%= link_to "Edit request", edit_loan_request_path(@loan_request.id), class:"link-button" %>
+          <% elsif current_admin? %>
+            <%= button_to "Delete request", loan_request_path(@loan_request.id), method: :delete %>
           <% else %>
             <%= link_to "Add To Cart", cart_items_path(item_id: @loan_request.id), method: 'post', class:"link-button" %>
           <% end %>

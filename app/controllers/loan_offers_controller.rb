@@ -5,7 +5,7 @@ class LoanOffersController < ApplicationController
   end
 
   def new
-    if current_user
+    if current_user && !current_admin?
       @loan_offer = LoanOffer.new
     else
       redirect_to login_path
@@ -37,10 +37,16 @@ class LoanOffersController < ApplicationController
   end
 
   def destroy
-    if current_user.loan_offers.delete(params[:id])
-      redirect_to dashboard_path(current_user.id)
+    if current_user && !current_admin?
+      current_user.loan_offers.delete(params[:id])
+      redirect_to user_loan_offers_path(current_user.username), danger: "Loan Offer Deleted!"
+    elsif current_admin?
+      loan_offer = LoanOffer.find(params[:id])
+      user = loan_offer.user
+      loan_offer.destroy
+      redirect_to user_path(user.username)
     else
-
+      redirect_to "/", danger: "Access Denied"
     end
   end
 

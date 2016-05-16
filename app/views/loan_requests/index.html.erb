@@ -30,7 +30,7 @@
 								<%= link_to "View Details", user_loan_request_path(username: loan.user.username, id: loan.id) %>
 							</div>
 							<div class="list-group-item bottom-button">
-								<%= button_to "Add To Cart", cart_items_path(item_id: loan.id), class:"index-page" %>
+								<%= button_to "Add To Cart", cart_items_path(item_id: loan.id), class:"index-page" if !current_admin? %>
 							</div>
 						</div>
 							</div>

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # get '/items', to: 'items#index'
   # get '/items/:id', to: 'items#show', as: 'item'
 
-  resources :users, only: [:new, :create, :index, :show, :destroy]
+  resources :users, only: [:new, :create, :index, :destroy]
   get "/dashboard", to: "users#dashboard", as: 'dashboard'
 
   post '/cart_items', to: 'cart_items#create'
@@ -32,7 +32,7 @@ Rails.application.routes.draw do
   get ':username/loan_offers/:id', to: 'user/loan_offers#show', as: 'user_loan_offer'
 
   get "/viewloans", to: "pages#viewloans"
-
+  get "/users/:username", to: "users#show"
   get '/:current_username/contracts', to: 'user/contracts#index', as: 'user_contracts'
 
   get "/createloans", to: "pages#createloans"
