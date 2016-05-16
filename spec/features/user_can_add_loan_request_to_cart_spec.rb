@@ -10,7 +10,7 @@ RSpec.feature "User can add loan requests to cart" do
 
     end
 
-    scenario "user can create add a loan request to their cart" do
+    scenario "user can add a loan request to their cart" do
         request = LoanRequest.last
 
         visit "/loan_requests"

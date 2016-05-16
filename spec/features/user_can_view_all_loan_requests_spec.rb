@@ -17,12 +17,6 @@ RSpec.feature "User can view all loan requests" do
         user1.loan_requests << LoanRequest.last
         request1 = user1.loan_requests.last
 
-
-        visit '/login'
-        fill_in "Username", with: user1.email
-        fill_in "Password", with: "password"
-        click_on "Log in"
-
         visit loan_requests_path
 
         expect(page).to have_content ActionController::Base.helpers.number_to_currency(request.amount)

@@ -1,29 +1,25 @@
 class CartItemsController < ApplicationController
 
   def create
-
     set_redirect
-    item = LoanRequest.find(params[:item_id])
-    if @cart.contents.include?(item.id.to_s)
-      flash[:warning] = "Loan is already in cart."
-    elsif item.user == current_user
-      flash[:warning] = "You cannot accept your own loan."
+    id, obj, valid, message = CartAddManager.call(request.referrer, params[:item_id], @cart.contents, current_user)
+    if !valid
+      flash[:warning] = message
     else
-      @cart.add_item(item.id)
-      flash[:notice] = "Loan saved to cart."
+      @cart.add_item(id, obj)
       session[:cart] = @cart.contents
+      flash[:success] = message
     end
     redirect_to session[:redirect]
-
   end
 
   def index
-    @items = @cart.mapped_values || []
+    @items = @cart.mapped_values || [[],[]]
   end
 
   def destroy
-    item = LoanRequest.find(params[:id])
-    @cart.remove_item(params[:id])
+    params[:item_class] == "request" ? item = LoanRequest.find(params[:id]) : item = LoanOffer.find(params[:id]) 
+    @cart.remove_item(params[:id], item.class)
     flash[:notice] = "Successfully removed <a href=\"/#{item.user.username}/loan_requests/#{item.id}\"> loan</a>!"
     redirect_to cart_path
   end
