@@ -24,9 +24,9 @@
           <% elsif current_admin? %>
             <%= button_to "Delete offer", loan_offer_path(@loan_offer.id), method: :delete %>
           <% else %>
-            <%= link_to "Add To Cart", cart_items_path(item_id: @loan_offer.id), method: 'post', class:"link-button" %>
+            <%= link_to "Add To Cart", cart_items_path(item_id: @loan_offer.id), method: 'post', class:"link-button bottom-show-button" %>
           <% end %>
-          <%= link_to "Back", :back, class:"link-button" %>
+          <%= link_to "Back", :back, class:"link-button bottom-show-button" %>
         </div>
 
       </div>

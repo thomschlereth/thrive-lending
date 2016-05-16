@@ -30,4 +30,8 @@ class ApplicationController < ActionController::Base
   def current_admin?
     current_user && current_user.admin?
   end
+
+  def require_admin
+    redirect_to "/errors/not_found.html" unless current_admin?
+  end
 end

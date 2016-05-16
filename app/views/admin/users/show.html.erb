@@ -1,43 +1,60 @@
-<div class="cart">
-  <div class="container">
-    <div class="cart-top">
-      <h1>Welcome Administrator: <%= @user.first_name %></h1>
-    </div>
-    <div class="cart-conclusion">
-      <table width="100%">
+<div class="container">
+	<div class="row user-dashboard">
+		<h1>Administrator Dashboard, Logged in as <%= @user.first_name %></h1>
+		<div class="col-md-4 stats">
+      <table class="table table-striped table-bordered">
         <tr>
-          <th>
-          Admin Dashboard
-          </th>
+          <td><b>Site Wide Statistics</b></td>
+          <td><b>#</b></td>
         </tr>
         <tr>
-          <td>
-            <%= link_to "View All Loan Requests", loan_requests_path %>
-          </td>
+          <td>Active Users</td>
+          <td>3</td>
         </tr>
         <tr>
-          <td>
-            <%= link_to "View All Loan Offers", loan_offers_path %>
-          </td>
+          <td>Inactive Users</td>
+          <td>4</td>
         </tr>
         <tr>
-          <td>
-            <%= link_to "View All Users", users_path %>
-          </td>
+          <td colspan="2"></td>
         </tr>
         <tr>
-          <td>
-            <%= link_to "Company News - Coming Soon!", "#" %>
-          </td>
+          <td>Active Loan Offers</td>
+          <td>20</td>
         </tr>
         <tr>
-          <td>
-            <%= link_to "Training - Coming Soon!", "#" %>
-          </td>
+          <td>Completed Loan Offers</td>
+          <td>23</td>
         </tr>
         <tr>
+          <td colspan="2"></td>
         </tr>
+        <tr>
+          <td>Active Loan Requests</td>
+          <td>253</td>
+        </tr>
+        <tr>
+          <td>Completed Loan Requests</td>
+          <td>13</td>
+        </tr>
+      
       </table>
     </div>
-  </div>
+    <div class="col-md-3 user-menu">
+			<nav>
+				<ul class="nav nav-pills nav-stacked nav-admin">
+          <li role="presentation"><%= link_to "View All Loan Requests", loan_requests_path %></li>
+          <li role="presentation"><%= link_to "View All Loan Offers", loan_offers_path %></li>
+          <li role="presentation"><%= link_to "View All Users", users_path %></li>
+					<li role="presentation"><a href="#">Edit My Profile</a></li>
+					<li role="presentation"><%= link_to "Create a Loan Offer", new_loan_offer_path %></li>
+					<li role="presentation"><%= link_to "Create a Loan Request", new_loan_request_path %></li>
+					<li role="presentation"><%= link_to "View My Loan Offers", user_loan_offers_path(@user.username) %></li>
+					<li role="presentation"><%= link_to "View My Loan Requests", user_loan_requests_path(@user.username) %></li>
+				</ul>
+			</nav>
+		</div>
+		<div class="col-md-3 user-menu">
+		</div>
+	</div>
 </div>

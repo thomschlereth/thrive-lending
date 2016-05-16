@@ -37,5 +37,5 @@ Rails.application.routes.draw do
 
   get "/createloans", to: "pages#createloans"
   get "/:category", to: "categories#show"
-  # get "/*page", to: "errors#not_found"
+  get "/*page", to: "errors#not_found"
 end

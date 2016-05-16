@@ -325,7 +325,7 @@ input[type=checkbox] {
 input[type=submit], .link-button, .link-button:hover {
 	float: right;
 	margin-right: 20px;
-	margin-top: -20px;
+	/*margin-top: -20px;*/
   padding:6px;
 	/*width: 80px;*/
 	height: 30px;
@@ -367,4 +367,12 @@ input[type=submit]:active {
 a:hover, a:focus {
   color: #669900;
   text-decoration: none;
+}
+
+.bottom-show-button {
+  margin-top:20px
+}
+
+.nav-admin a:hover {
+  background-color: blue;
 }

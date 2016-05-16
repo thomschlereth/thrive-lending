@@ -11,7 +11,7 @@ RSpec.feature "Admin can login" do
     click_on "Log in"
 
     expect(current_path).to eq("/admin/dashboard")
-    expect(page).to have_content("Welcome Administrator: #{admin.first_name}")
+    expect(page).to have_content("Administrator Dashboard, Logged in as #{admin.first_name}")
     expect(page).to_not have_link("Log In")
     expect(page).to have_link("Log Out")
   end
