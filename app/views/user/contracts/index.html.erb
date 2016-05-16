@@ -1,8 +1,44 @@
-<% @l_contracts.each do |contract| %>
-Lender: <%= contract.lender.first_name + " " + contract.lender.last_name %><br>  
-Borrower: <%= contract.borrower.first_name + " " + contract.borrower.last_name %><br>  
-Amount: <%= contract.loan_request.amount %><br>
-Term: <%= contract.loan_request.term %> Months<br>
-Rate: <%= contract.loan_request.rate %>%<br>
-Status: <%= contract.status %><br>
-<% end %>
+<div class="mainbody">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2><%= current_user.username.capitalize %>'s Contracts</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="panel panel-success">
+          <div class="panel-heading">
+            <h4>As a Lender:</h4>
+          </div>
+          <% @l_contracts.each do |c| %>
+            <% present(c) do |contract| %>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                Lender: <%= contract.full_name("lender") %>
+              </li>
+              <li class="list-group-item">
+                Borrower: <%= contract.full_name("borrower") %>
+              </li>
+              <li class="list-group-item">
+                Amount: <%= contract.amount("request") %>
+              </li>
+              <li class="list-group-item">
+                Term: <%= contract.months("request") %>
+              </li>
+              <li class="list-group-item">
+                Rate: <%= contract.ir("request") %>
+              </li>
+              <li class="list-group-item">
+                Status: <%= contract.status %>
+              </li>
+            </ul>
+            <div class="panel-footer">
+            </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -20,12 +20,12 @@ RSpec.feature "User checkout creates contract" do
 
         click_button "Submit"
 
-        contract = Contract.last
+        contract = Contract.last.loan_request
 
         expect(current_path).to eq(user_contracts_path(user.username))
-        expect(page).to have_content contract.loan_request.amount
-        expect(page).to have_content contract.loan_request.term
-        expect(page).to have_content contract.loan_request.rate
+        expect(page).to have_content ActionController::Base.helpers.number_to_currency(contract.amount)
+        expect(page).to have_content contract.term
+        expect(page).to have_content contract.rate
         expect(page).to have_content "Pending"
     end
 end

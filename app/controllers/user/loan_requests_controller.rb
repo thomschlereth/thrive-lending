@@ -1,7 +1,7 @@
 class User::LoanRequestsController < User::BaseController
 
   def index
-    @user = current_user
+    @user = User.find_by(username: params[:username])
     @loan_requests = @user.loan_requests
   end
 

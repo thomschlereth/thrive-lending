@@ -1,4 +1,9 @@
- class LoanRequestsController < User::BaseController
+ class LoanRequestsController < ApplicationController
+
+   def index
+     @loan_requests = LoanRequest.all
+   end
+
 
  def new
     @loan_request = LoanRequest.new
@@ -13,10 +18,6 @@
       flash[:now] = "Invalid Loan Request"
       render :new
     end
-  end
-
-  def index
-    @loan_requests = LoanRequest.all
   end
 
   def edit
@@ -37,7 +38,7 @@
 
   def destroy
     if current_user.loan_requests.delete(params[:id])
-      redirect_to user_loan_requests_path(current_user.username), danger: "Loan Request Deleted!"  
+      redirect_to user_loan_requests_path(current_user.username), danger: "Loan Request Deleted!"
     else
 
     end

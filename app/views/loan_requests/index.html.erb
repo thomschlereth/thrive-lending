@@ -27,10 +27,10 @@
 								<p class="list-group-item-text"><%= loan.term %> months</p>
 							</div>
 							<div class="list-group-item">
-								<%= link_to "View Details", user_loan_request_path(username: loan.user.username, id: loan) %>
+								<%= link_to "View Details", user_loan_request_path(username: loan.user.username, id: loan.id) %>
 							</div>
 							<div class="list-group-item bottom-button">
-								<%= link_to "Add To Cart", cart_items_path(item_id: loan.id), method: 'post', class:"link-button index-page" %>
+								<%= button_to "Add To Cart", cart_items_path(item_id: loan.id), class:"index-page" %>
 							</div>
 						</div>
 							</div>

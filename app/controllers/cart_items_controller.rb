@@ -1,8 +1,8 @@
 class CartItemsController < ApplicationController
 
   def create
+
     set_redirect
-    
     item = LoanRequest.find(params[:item_id])
     if @cart.contents.include?(item.id.to_s)
       flash[:warning] = "Loan is already in cart."
@@ -13,7 +13,8 @@ class CartItemsController < ApplicationController
       flash[:notice] = "Loan saved to cart."
       session[:cart] = @cart.contents
     end
-      redirect_to session[:redirect]
+    redirect_to session[:redirect]
+
   end
 
   def index
