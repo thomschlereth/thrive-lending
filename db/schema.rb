@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160514210318) do
+ActiveRecord::Schema.define(version: 20160516205950) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20160514210318) do
     t.string   "status",          default: "Pending"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.boolean  "active",          default: true
   end
 
   add_index "contracts", ["borrower_id"], name: "index_contracts_on_borrower_id", using: :btree
@@ -54,8 +55,9 @@ ActiveRecord::Schema.define(version: 20160514210318) do
     t.integer  "term"
     t.integer  "amount"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.boolean  "active",     default: true
   end
 
   add_index "loan_offers", ["user_id"], name: "index_loan_offers_on_user_id", using: :btree
@@ -64,9 +66,10 @@ ActiveRecord::Schema.define(version: 20160514210318) do
     t.integer  "user_id"
     t.decimal  "amount"
     t.decimal  "rate"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.integer  "term"
+    t.boolean  "active",     default: true
   end
 
   add_index "loan_requests", ["user_id"], name: "index_loan_requests_on_user_id", using: :btree
@@ -102,6 +105,7 @@ ActiveRecord::Schema.define(version: 20160514210318) do
     t.string  "address"
     t.integer "role"
     t.string  "username"
+    t.boolean "active",          default: true
   end
 
   add_foreign_key "items", "categories"

@@ -6,11 +6,15 @@ class SessionsController < ApplicationController
   end
 
   def create
+
     user = User.find_by(username: params[:session][:username])
-    if user && user.authenticate(params[:session][:password])
+    if user && user.authenticate(params[:session][:password]) &&
       session[:username] = user.username
       if current_admin?
         redirect_to admin_dashboard_path
+      elsif !user.active
+        session.clear
+        redirect_to root_path, danger: "Account is inactive, please contact us for help"
       else
         redirect_to dashboard_path, success: "yay!"
       end

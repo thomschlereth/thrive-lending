@@ -27,18 +27,24 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.where(role: 0)
+    @active_users = User.where(active: true)
+    @inactive_users = User.where(active: false)
   end
 
   def destroy
     if current_user && !current_admin?
-      current_user.destroy
-      redirect_to new_user_path
+      current_user.loan_requests.update_all(active: false)
+      current_user.loan_offers.update_all(active: false)
+      current_user.update(active: false) #move this to model
+      redirect_to logout_path
     elsif current_admin?
-      User.find(params[:id]).destroy
+      user = User.find(params[:id])
+      user.loan_requests.update_all(active: false)
+      user.loan_offers.update_all(active: false)
+      user.update(active: false) #move this to model
       redirect_to users_path
     else
-      flash[:message] = "You don't have permission"
+      flash[:danger] = "You don't have permission"
       redirect_to "/"
     end
   end

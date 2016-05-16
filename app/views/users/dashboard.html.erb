@@ -60,6 +60,7 @@
 					<li role="presentation"><%= link_to "Create a Loan Request", new_loan_request_path %></li>
 					<li role="presentation"><%= link_to "View My Loan Offers", user_loan_offers_path(@user.username) %></li>
 					<li role="presentation"><%= link_to "View My Loan Requests", user_loan_requests_path(@user.username) %></li>
+					<li role="presentation"><%= button_to "Delete Account", user_path(@user), method: :delete %></li>
 				</ul>
 			</nav>
 		</div>
