@@ -41,6 +41,7 @@ class Seed
         user.loan_offers.create!(amount: rand(50..10000),
          rate: "#{rand(3..20)}.#{rand(0..99)}".to_f,
          term: rand(3..12))
+        create_contract(user.id, loan.id) if (rand(1..10)<5)
       rescue
         user = User.find(rand(3..50))
         user.loan_offers.create!(amount: rand(50..10000),
@@ -70,10 +71,16 @@ class Seed
     puts "Created Loan Requests"
   end
 
-  def create_contract(user_id, loan_id)
+  def create_request_contract(user_id, loan_id)
     status = ["Pending", "Approved", "Paid"]
     contract = Contract.create!(lender_id: rand(3..50), borrower_id: user_id, status: status.sample, loan_request_id: loan_id)
   end
+
+  def create_request_contract(user_id, loan_id)
+    status = ["Pending", "Approved", "Paid"]
+    contract = Contract.create!(borrower_id: rand(3..50), lender_id: user_id, status: status.sample, loan_offer_id: loan_id)
+  end
+
 
   private
 
