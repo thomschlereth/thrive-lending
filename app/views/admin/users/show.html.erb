@@ -37,15 +37,25 @@
           <td>Completed Loan Requests</td>
           <td>13</td>
         </tr>
-      
+
       </table>
     </div>
-    <div class="col-md-3 user-menu">
+		<div>
+			<a href="#" id="show-admin-sitewide-nav">Site Wide</a>
+			<a href="#" id="show-admin-user-nav">Profile data</a>
+		</div>
+    <div class="col-md-3 user-menu full-site-nav">
 			<nav>
 				<ul class="nav nav-pills nav-stacked nav-admin">
           <li role="presentation"><%= link_to "View All Loan Requests", loan_requests_path %></li>
           <li role="presentation"><%= link_to "View All Loan Offers", loan_offers_path %></li>
           <li role="presentation"><%= link_to "View All Users", users_path %></li>
+				</ul>
+			</nav>
+		</div>
+		<div class="col-md-3 user-menu admin-user-nav hidden">
+			<nav>
+				<ul class="nav nav-pills nav-stacked nav-admin">
 					<li role="presentation"><a href="#">Edit My Profile</a></li>
 					<li role="presentation"><%= link_to "Create a Loan Offer", new_loan_offer_path %></li>
 					<li role="presentation"><%= link_to "Create a Loan Request", new_loan_request_path %></li>
@@ -54,6 +64,7 @@
 				</ul>
 			</nav>
 		</div>
+
 		<div class="col-md-3 user-menu">
 		</div>
 	</div>

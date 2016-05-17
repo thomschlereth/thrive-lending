@@ -385,3 +385,7 @@ a:hover, a:focus {
   background: #FF0000 !important;
   border: 0px !important;
 }
+
+.hidden {
+  display: none;
+}
