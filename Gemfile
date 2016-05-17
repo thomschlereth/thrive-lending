@@ -40,7 +40,7 @@ group :development, :test do
   gem 'mocha'
   gem 'rspec-mocks'
   gem 'shoulda'
-
+  gem 'simplecov', '~> 0.11.2'
   gem 'rspec-core'
   gem 'rspec-expectations'
   gem 'rspec-support'
