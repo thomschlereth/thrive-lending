@@ -10,10 +10,4 @@ class User::LoanRequestsController < User::BaseController
     @loan_request = @user.loan_requests.find_by(id: params[:id])
   end
 
-  private
-
-  def loan_request_params
-    params.require(:loan_request).permit(:amount, :rate)
-  end
-
 end

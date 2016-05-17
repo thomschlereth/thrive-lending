@@ -5,6 +5,4 @@ class User::ContractsController < User::BaseController
     @b_contracts = current_user.borrowed
   end
 
-
-
 end

@@ -1,7 +1,7 @@
 class LoanRequestsController < ApplicationController
 
   def index
-    @loan_requests = LoanRequest.all
+    @loan_requests = LoanRequest.where(active: true)
   end
 
   def new
@@ -55,6 +55,5 @@ class LoanRequestsController < ApplicationController
   def loan_request_params
     params.require(:loan_request).permit(:amount, :rate, :term)
   end
-
 
 end

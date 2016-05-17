@@ -4,4 +4,5 @@ class Contract < ActiveRecord::Base
   validates :lender_id, presence: true
   validates :borrower_id, presence: true
   belongs_to :loan_request
+  belongs_to :loan_offer
 end

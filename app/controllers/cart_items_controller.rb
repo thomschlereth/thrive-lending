@@ -6,6 +6,7 @@ class CartItemsController < ApplicationController
     if !valid
       flash[:warning] = message
     else
+      # binding.pry
       @cart.add_item(id, obj)
       session[:cart] = @cart.contents
       flash[:success] = message
@@ -18,7 +19,7 @@ class CartItemsController < ApplicationController
   end
 
   def destroy
-    params[:item_class] == "request" ? item = LoanRequest.find(params[:id]) : item = LoanOffer.find(params[:id]) 
+    params[:item_class] == "request" ? item = LoanRequest.find(params[:id]) : item = LoanOffer.find(params[:id])
     @cart.remove_item(params[:id], item.class)
     flash[:notice] = "Successfully removed <a href=\"/#{item.user.username}/loan_requests/#{item.id}\"> loan</a>!"
     redirect_to cart_path

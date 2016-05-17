@@ -1,7 +1,7 @@
 class LoanOffersController < ApplicationController
 
   def index
-    @loan_offers = LoanOffer.all
+    @loan_offers = LoanOffer.where(active: true)
   end
 
   def new
