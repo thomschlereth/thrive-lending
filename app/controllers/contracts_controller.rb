@@ -7,7 +7,6 @@ class ContractsController < ApplicationController
   end
 
   def create
-    #need to do some major extraction
     cart = session[:cart].transform_keys { |k| k.to_sym }
     loan_requests = LoanRequest.find(cart[:requests])
     loan_offers = LoanOffer.find(cart[:offers])
@@ -25,6 +24,24 @@ class ContractsController < ApplicationController
     redirect_to user_contracts_path(current_user.username)
   end
 
+  def destroy
+    if current_admin?
+      contract = Contract.find(params[:id])
+      contract.update(active: false)
+      redirect_to admin_dashboard_path
+    else
+      flash[:error] = "Not allowed!"
+    end
+  end
 
+  def reinstate
+    if current_admin?
+      contract = Contract.find(params[:id])
+      contract.update(active: true)
+      redirect_to admin_dashboard_path
+    else
+      flash[:error] = "Not allowed!"
+    end
+  end
 
 end
