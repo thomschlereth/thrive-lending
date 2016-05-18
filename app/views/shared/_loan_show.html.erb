@@ -1,0 +1,23 @@
+<div class="list-group-item row">
+  <h4 class="list-group-item-heading">Loan <%= side.capitalize %> ID #<%= lr.id %></h4>
+</div>
+<div class="list-group-item row">
+  <h4 class="list-group-item-heading col-md-6">Amount:<br /> <%= number_to_currency(lr.amount) %></h4>
+  <h4 class="list-group-item-heading col-md-6">Interest Earning Potential: $1,147.50</h4>
+</div>
+<div class="list-group-item row">
+  <h4 class="list-group-item-heading col-md-6">APR:<br /><%= lr.rate %>%</h4>
+  <h4 class="list-group-item-heading col-md-6">Effective Interest:<br />17.35%</h4>
+</div>
+<div class="list-group-item row">
+  <h4 class="list-group-item-heading col-md-6"></h4>
+  <h4 class="list-group-item-heading col-md-6">Estimated Monthly Payments:<br />$183.40</h4>
+</div>
+<% if current_user == @user %>
+  <%= link_to "Edit #{side}", edit_loan_request_path(lr.id), class:"link-button" %>
+  <%= button_to "Delete #{side}", loan_request_path(lr.id), method: :delete %>
+<% elsif current_admin? %>
+  <%= button_to "Delete request", loan_request_path(lr.id), method: :delete %>
+<% end %>
+<%= link_to "Add To Cart", cart_items_path(item_id: lr.id), method: 'post', class:"link-button" %>
+<%= link_to "Back", :back, class:"link-button" %>

@@ -38,7 +38,7 @@ class Seed
     until LoanOffer.count == 100 do
       begin
         user = User.find(rand(3..50))
-        user.loan_offers.create!(amount: rand(50..10000),
+        loan = user.loan_offers.create!(amount: rand(50..10000),
          rate: "#{rand(3..20)}.#{rand(0..99)}".to_f,
          term: rand(3..12))
         create_offer_contract(user.id, loan.id) if (rand(1..10)<5)

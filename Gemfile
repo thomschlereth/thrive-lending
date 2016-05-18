@@ -36,7 +36,6 @@ group :development, :test do
   gem 'capybara'
   gem 'launchy'
   gem 'byebug'
-  gem 'pry'
   gem 'mocha'
   gem 'rspec-mocks'
   gem 'shoulda'

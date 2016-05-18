@@ -6,6 +6,7 @@ class User::LoanRequestsController < User::BaseController
   end
 
   def show
+    @side = "request"
     @user = User.find_by(username: params[:username])
     @loan_request = @user.loan_requests.find_by(id: params[:id])
   end

@@ -7,28 +7,26 @@
             <h4 class="list-group-item-heading">Loan Offer ID #<%= @loan_offer.id %></h4>
           </div>
           <div class="list-group-item row">
-            <h4 class="list-group-item-heading col-md-6">Amount:<br /> <%= number_to_currency(@loan_offer.amount) %></h4>
-            <h4 class="list-group-item-heading col-md-6">Interest Earning Potential: $1,147.50</h4>
+            <h5 class="list-group-item-heading col-md-6">Amount:<br /> <%= number_to_currency(@loan_offer.amount) %></h5>
+            <h5 class="list-group-item-heading col-md-6">Interest Earning Potential:<br /><%= number_to_currency(interest(@loan_offer)) %></h5>
           </div>
           <div class="list-group-item row">
-            <h4 class="list-group-item-heading col-md-6">APR:<br /><%= @loan_offer.rate %>%</h4>
-            <h4 class="list-group-item-heading col-md-6">Effective Interest:<br />17.35%</h4>
+            <h5 class="list-group-item-heading col-md-6">APR:<br /><%= @loan_offer.rate %>%</h5>
+            <h5 class="list-group-item-heading col-md-6">Effective Interest:<br /><%= effective_interest(@loan_offer) %>%</h5>
           </div>
           <div class="list-group-item row">
-            <h4 class="list-group-item-heading col-md-6">Term:<br /><%= @loan_offer.term %> Months</h4>
-            <h4 class="list-group-item-heading col-md-6">Estimated Monthly Payments:<br />$183.40</h4>
+            <h5 class="list-group-item-heading col-md-6">Term:<br /><%= @loan_offer.term %> Months</h5>
+            <h5 class="list-group-item-heading col-md-6">Estimated Monthly Payments:<br /><%= number_to_currency(monthly_payment(@loan_offer)) %></h5>
           </div>
           <% if current_user == @user %>
+            <%= link_to "Edit offer", edit_loan_offer_path(@loan_offer.id), class:"link-button bottom-show-button" %>
             <%= button_to "Delete offer", loan_offer_path(@loan_offer.id), method: :delete %>
-            <%= link_to "Edit offer", edit_loan_offer_path(@loan_offer.id), class:"link-button" %>
           <% elsif current_admin? %>
             <%= button_to "Delete offer", loan_offer_path(@loan_offer.id), method: :delete %>
           <% else %>
             <%= link_to "Add To Cart", cart_items_path(item_id: @loan_offer.id), method: 'post', class:"link-button bottom-show-button" %>
           <% end %>
-          <%= link_to "Back", :back, class:"link-button bottom-show-button" %>
         </div>
-
       </div>
     </div>
   </div>

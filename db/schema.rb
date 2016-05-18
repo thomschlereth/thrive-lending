@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160516205950) do
+ActiveRecord::Schema.define(version: 20160517221541) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +74,17 @@ ActiveRecord::Schema.define(version: 20160516205950) do
 
   add_index "loan_requests", ["user_id"], name: "index_loan_requests_on_user_id", using: :btree
 
+  create_table "loans", force: :cascade do |t|
+    t.float   "rate"
+    t.integer "term"
+    t.integer "amount"
+    t.boolean "active",    default: true
+    t.integer "user_id"
+    t.string  "loan_type"
+  end
+
+  add_index "loans", ["user_id"], name: "index_loans_on_user_id", using: :btree
+
   create_table "order_items", force: :cascade do |t|
     t.integer  "order_id"
     t.integer  "item_id"
@@ -111,6 +122,7 @@ ActiveRecord::Schema.define(version: 20160516205950) do
   add_foreign_key "items", "categories"
   add_foreign_key "loan_offers", "users"
   add_foreign_key "loan_requests", "users"
+  add_foreign_key "loans", "users"
   add_foreign_key "order_items", "items"
   add_foreign_key "order_items", "orders"
   add_foreign_key "orders", "users"
