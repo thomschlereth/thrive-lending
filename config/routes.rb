@@ -2,9 +2,6 @@ Rails.application.routes.draw do
 
   root to: "pages#splash"
 
-  # get "/items", to: "items#index"
-  # get "/items/:id", to: "items#show", as: "item"
-
   resources :users, only: [:new, :create, :index, :destroy]
   get "/dashboard", to: "users#dashboard", as: "dashboard"
 

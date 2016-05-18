@@ -49,17 +49,17 @@ class Cart
       end.reduce(:+).to_f
   end
 
-  def total_price
-    if contents.empty?
-      return 0
-    else
-      req = mapped_values[0].map do |ci|
-        ci.amount
-      end.reduce(:+)
-      off = mapped_values[1].map do |ci|
-        ci.amount
-      end.reduce(:+)
-      off.to_f - req.to_f
-    end
-  end
+  # def total_price
+  #   if contents.empty?
+  #     return 0
+  #   else
+  #     req = mapped_values[0].map do |ci|
+  #       ci.amount
+  #     end.reduce(:+)
+  #     off = mapped_values[1].map do |ci|
+  #       ci.amount
+  #     end.reduce(:+)
+  #     off.to_f - req.to_f
+  #   end
+  # end
 end

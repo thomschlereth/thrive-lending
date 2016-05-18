@@ -12,7 +12,7 @@ RSpec.feature "Logged in user can delete profile" do
 
     expect(User.where(active: true).count).to eq(2)
 
-    click_button "Delete Account"
+    click_button "Deactivate Account"
 
     expect(current_path).to eq(root_path)
     expect(User.where(active: true).count).to eq(1)

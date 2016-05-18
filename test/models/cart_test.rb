@@ -43,18 +43,18 @@ class CartTest < ActiveSupport::TestCase
     assert_equal 2, cart.count_all
   end
 
-  def test_total_price_of_cart
-    create_categories
-    create_items(2)
-    item1 = Item.first
-    item2 = Item.last
-    cart = Cart.new({})
-    2.times do
-      cart.add_item(item1.id)
-    end
-    cart.add_item(item2.id)
-
-    expected = ((item1.price * 2) + item2.price)
-    assert_equal expected, cart.total_price
-  end
+  # def test_total_price_of_cart
+  #   create_categories
+  #   create_items(2)
+  #   item1 = Item.first
+  #   item2 = Item.last
+  #   cart = Cart.new({})
+  #   2.times do
+  #     cart.add_item(item1.id)
+  #   end
+  #   cart.add_item(item2.id)
+  #
+  #   expected = ((item1.price * 2) + item2.price)
+  #   assert_equal expected, cart.total_price
+  # end
 end

@@ -53,7 +53,6 @@ class UsersController < ApplicationController
     if current_user
       redirect_to admin_dashboard_path if current_admin?
       @user = current_user
-      @orders = @user.orders
     else
       redirect_to login_path
     end

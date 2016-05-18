@@ -6,7 +6,7 @@ RSpec.describe Cart, type: :model do
     cart = Cart.new({requests: ["4"], offers: ["23"]})
 
     assert_equal({:requests=>["4"], :offers=>["23"]}, cart.contents)
-  end 
+  end
 
   it "counts all items in the cart" do
     cart = Cart.new({offers: ["1", "2"], requests: ["3"]})
@@ -32,7 +32,7 @@ RSpec.describe Cart, type: :model do
 
   it "removes an item from the cart" do
     cart = Cart.new({offers: ["1", "2"], requests: ["3"]})
-    
+
     assert_equal 3, cart.count_all
 
     cart.remove_item("1", LoanOffer)
@@ -50,5 +50,6 @@ RSpec.describe Cart, type: :model do
 
     assert_equal expected, cart.req_price
   end
+
 
 end
