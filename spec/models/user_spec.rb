@@ -8,6 +8,8 @@ RSpec.describe User, type: :model do
   it { should validate_uniqueness_of(:email) }
   it { should validate_presence_of(:zipcode) }
   it { should validate_presence_of(:state) }
+  it { should validate_presence_of(:description) }
+  it { should validate_presence_of(:image_path) }
   it { should validate_presence_of(:city) }
   it { should validate_presence_of(:address) }
   it { should validate_presence_of(:username) }

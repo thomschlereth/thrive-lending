@@ -7,26 +7,27 @@ class Seed
   end
 
   def create_users
-    puts "Created Users"
+    puts "Creating Users"
     create_kami_admin
     create_mark_admin
+    puts "Created Admin"
     create_thom
+    puts "Created Standard Default User"
     until User.count == 50 do
       begin
-        username = Faker::Name.first_name
-        User.create!(first_name: username, last_name: Faker::Name.last_name,
+        User.create!(first_name: username, last_name: Faker::Name.last_name, description: Faker::Commerce.department,
           email: Faker::Internet.email, city: Faker::Address.city, state: Faker::Address.state,
-          zipcode: Faker::Address.zip, password: "password",
+          zipcode: Faker::Address.zip, password: "password", image_path: photo_url,
           address: Faker::Address.street_address, role: 0, username: username.downcase)
       rescue
-        username = Faker::Name.first_name
-        User.create!(first_name: username, last_name: Faker::Name.last_name,
+        puts "Rescue User"
+        User.create!(first_name: username, last_name: Faker::Name.last_name, description: Faker::Commerce.department,
           email: Faker::Internet.email, city: Faker::Address.city, state: Faker::Address.state,
-          zipcode: Faker::Address.zip, password: "password",
+          zipcode: Faker::Address.zip, password: "password", image_path: photo_url,
           address: Faker::Address.street_address, role: 0, username: username.downcase)
       end
     end
-    puts "Created Users"
+    puts "Created Random Standard Users"
   end
 
   def create_loan_offers
@@ -85,28 +86,38 @@ class Seed
   private
 
   def create_kami_admin
-    User.create!(first_name: "Kami", last_name: "Boers",
+    User.create!(first_name: "Kami", last_name: "Boers", image_path: photo_url,
       email: "kami@kami.kami", city: "Denver", state: "CO",
-      zipcode: "80229", password: "password",
+      zipcode: "80229", password: "password", description: Faker::Commerce.department,
       address: "The Dungeon where there is no sunlight",
       role: 1, username: "kami")
   end
 
   def create_mark_admin
-    User.create!(first_name: "Mark", last_name: "Miranda",
+    User.create!(first_name: "Mark", last_name: "Miranda", image_path: photo_url,
       email: "mark@mark.mark", city: "Denver", state: "CO",
-      zipcode: "80229", password: "password",
+      zipcode: "80229", password: "password", description: Faker::Commerce.department,
       address: "The basement flooding from students tears",
       role: 1, username: "mark")
   end
 
   def create_thom
-    User.create!(first_name: "Thom", last_name: "Pickett",
+    User.create!(first_name: "Thom", last_name: "Pickett", image_path: photo_url,
       email: "thom@thom.thom", city: "Denver", state: "CO",
-      zipcode: "80229", password: "password",
+      zipcode: "80229", password: "password", description: Faker::Commerce.department,
       address: "The Purgatory of waiting to see if we pass or fail",
       role: 0, username: "thom")
   end
+
+  def username
+    username = Faker::Name.first_name
+  end
+
+  def photo_url
+    fetcher = Fotofetch::Fetch.new
+    photo_url = fetcher.fetch_links("SEARCHTERM").values.first
+  end
+
 end
 
 Seed.new

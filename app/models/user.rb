@@ -18,6 +18,8 @@ class User < ActiveRecord::Base
   validates :address,           presence: true
   validates :city,           presence: true
   validates :state,          presence: true
+  validates :description,    presence: true
+  validates :image_path,     presence: true
   validates :username,       presence: true, uniqueness: true
   validates :zipcode,        presence: true,
                              length: { minimum: 5 }

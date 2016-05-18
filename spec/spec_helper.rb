@@ -87,6 +87,8 @@ RSpec.configure do |config|
       city: Faker::Address.city,
       state: Faker::Address.state_abbr,
       zipcode: Faker::Address.zip_code,
+      image_path: "yo!",
+      description: Faker::Commerce.department,
       password: "password",
       username: first_name.downcase,
       role: role)

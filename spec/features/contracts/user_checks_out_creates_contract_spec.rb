@@ -16,6 +16,7 @@ RSpec.feature "User checkout creates contract" do
     click_on "Add To Cart"
 
     visit cart_path
+    # save_and_open_page
     click_on "Place Order"
 
     expect(current_path).to eq(new_contract_path)
