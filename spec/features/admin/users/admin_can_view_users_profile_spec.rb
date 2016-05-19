@@ -18,6 +18,6 @@ RSpec.feature "Logged in admin can view user" do
     expect(page).to_not have_link("Create a Loan Offer")
     expect(page).to have_link("View #{@user1.first_name}'s Loan Requests")
     expect(page).to have_link("View #{@user1.first_name}'s Loan Offers")
-    expect(page).to have_link("Delete #{@user1.first_name}'s Account")
+    expect(page).to have_button("Deactivate #{@user1.first_name}'s Account")
   end
 end

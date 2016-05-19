@@ -13,15 +13,15 @@
 				</tr>
 				<tr>
 					<td>Outstanding Loan Offerings</td>
-					<td>3</td>
+					<td><%= @user.loans_count("offers") %></td>
 				</tr>
 				<tr>
 					<td>Approved Loan Offerings</td>
-					<td>4</td>
+					<td><%= @user.approved_loans_count("offers") %></td>
 				</tr>
 				<tr>
 					<td>Total Invested in Loan Offerings</td>
-					<td><%= number_to_currency("120000") %></td>
+					<td><%= number_to_currency(@user.investment("offers")) %></td>
 				</tr>
 			<tr>
 				<td colspan="2">
@@ -37,15 +37,15 @@
 				</tr>
 				<tr>
 					<td>Outstanding Loan Requests</td>
-					<td>0</td>
+					<td><%= @user.loans_count("requests") %></td>
 				</tr>
 				<tr>
 					<td>Approved Loan Requests</td>
-					<td>2</td>
+					<td><%= @user.approved_loans_count("requests") %></td>
 				</tr>
 				<tr>
 					<td>Total Owed in Loan Requests</td>
-					<td><%= number_to_currency("6000") %></td>
+					<td><%= number_to_currency(@user.investment("requests")) %></td>
 				</tr>
 				<tr>
 					<td colspan="2s">
@@ -53,7 +53,7 @@
 				</tr>
 				<tr>
 					<td><b>Portfolio Net Worth</b></td>
-					<td><b><%= number_to_currency("114000") %></b></td>
+					<td><b><%= number_to_currency(@user.net_worth) %></b></td>
 				</tr>
 			</table>
 		</div>
@@ -62,11 +62,9 @@
 				<ul class="nav nav-pills nav-stacked">
 					<li role="presentation"><%= link_to "View #{@user.first_name}'s Loan Offers", user_loan_offers_path(@user.username) %></li>
 					<li role="presentation"><%= link_to "View #{@user.first_name}'s Loan Requests", user_loan_requests_path(@user.username) %></li>
-					<li role="presentation"><%= link_to "Delete #{@user.first_name}'s Account", user_path(@user.id), method: :delete %></li>
+					<li role="presentation"><%= button_to "Deactivate #{@user.first_name}'s Account", user_path(@user.id), method: :delete, class:"deactivate" %></li>
 				</ul>
 			</nav>
-		</div>
-		<div class="col-md-3 user-menu">
 		</div>
 	</div>
 </div>

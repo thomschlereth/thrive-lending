@@ -7,9 +7,9 @@
     <li class="list-group-item">Rate: <%= contract.ir(loan_type) %></li>
     <li class="list-group-item">Status: <%= contract.status %></li>
     <li class="list-group-item">Active: <%= contract.active if current_admin?%></li>
+    <li class="list-group-item">
+      <%= button_to "Deactivate Contract", contract_path(contract.id), method: :delete, class:"unmargin" if current_admin? && contract.active %>
+      <%= button_to "Reinstate Contract", reinstate_contract_path(contract.id), class:"unmargin" if current_admin? && !contract.active %>
+    </li>
   </ul>
-  <%= button_to "Delete Contract", contract_path(contract.id), method: :delete if current_admin? && contract.active %>
-  <%= button_to "Reinstate Contract", reinstate_contract_path(contract.id) if current_admin? && !contract.active %>
-  <div class="panel-footer">
-  </div>
 <% end %>

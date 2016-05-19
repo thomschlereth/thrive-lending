@@ -14,7 +14,7 @@ class UsersController < ApplicationController
       redirect_to session[:redirect]
       UserNotifier.welcome(@user, @user.email).deliver_now
     else
-      flash.now[:error] = @user.errors.full_messages.join(", ")
+      flash.now[:danger] = @user.errors.full_messages.join(", ")
       render :new
     end
   end
@@ -36,17 +36,17 @@ class UsersController < ApplicationController
     if current_user && !current_admin?
       current_user.loan_requests.update_all(active: false)
       current_user.loan_offers.update_all(active: false)
-      current_user.update(active: false) #move this to model
+      current_user.active_update
       UserNotifier.unwelcome(current_user, current_user.email).deliver_now
       redirect_to logout_path
     elsif current_admin?
       user = User.find(params[:id])
       user.loan_requests.update_all(active: false)
       user.loan_offers.update_all(active: false)
-      user.update(active: false) #move this to model
+      user.active_update
       UserNotifier.unwelcome(user, user.email).deliver_now
-      
-      redirect_to users_path
+      redirect_to users_path, success: "deactivated!"
+
     else
       flash[:danger] = "You don't have permission"
       redirect_to "/"

@@ -34,7 +34,7 @@ class ContractsController < ApplicationController
     if current_admin?
       contract = Contract.find(params[:id])
       contract.update(active: false)
-      redirect_to admin_dashboard_path
+      redirect_to :back
     else
       flash[:error] = "Not allowed!"
     end
@@ -44,7 +44,7 @@ class ContractsController < ApplicationController
     if current_admin?
       contract = Contract.find(params[:id])
       contract.update(active: true)
-      redirect_to admin_dashboard_path
+      redirect_to :back
     else
       flash[:error] = "Not allowed!"
     end

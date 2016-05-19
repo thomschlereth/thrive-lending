@@ -16,6 +16,20 @@ RSpec.feature "User can login" do
     assert page.has_link? "Log Out"
   end
 
+  scenario "existing inactive user cannot log into account" do
+    create_user
+    user = User.first
+    user.update(active:false)
+    visit '/login'
+    fill_in "Username", with: user.username
+    fill_in "Password", with: "password"
+    click_on "Log in"
+
+    expect(current_path).to eq "/"
+    expect(page).to have_link "Log In"
+  end
+
+
   scenario "types wrong password" do
     create_user
     user = User.first
@@ -52,12 +66,13 @@ RSpec.feature "User can login" do
     click_on "Log in"
 
     expect(page).to have_content "Hello, #{user.first_name}"
-    
+
     click_on "Log Out"
 
-   expect(current_path).to eq(root_path)
-   expect(page).to have_link "Log In"
+    expect(current_path).to eq(root_path)
+    expect(page).to have_link "Log In"
     expect(page).to have_no_button "Log Out"
-    end
+  end
+
 
 end

@@ -6,7 +6,6 @@ class CartItemsController < ApplicationController
     if !valid
       flash[:warning] = message
     else
-      # binding.pry
       @cart.add_item(id, obj)
       session[:cart] = @cart.contents
       flash[:success] = message

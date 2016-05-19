@@ -18,8 +18,6 @@ class User < ActiveRecord::Base
   validates :address,           presence: true
   validates :city,           presence: true
   validates :state,          presence: true
-  # validates :description,    presence: true
-  # validates :image_path,     presence: true
   validates :username,       presence: true, uniqueness: true
   validates :zipcode,        presence: true,
                              length: { minimum: 5 }
@@ -44,26 +42,38 @@ class User < ActiveRecord::Base
     investment("offers") - investment("requests")
   end
 
+  def active_update
+    update(active:false)
+  end
+
   private
 
-  def active_loans(side)
-    if side == "offers"
-      loan_offers.where(active: true)
-    elsif side == "requests"
-      loan_requests.where(active: true)
-    else
-      []
+    def active_loans(side)
+      if side == "offers"
+        loan_offers.where(active: true)
+      elsif side == "requests"
+        loan_requests.where(active: true)
+      else
+        []
+      end
     end
-  end
 
-  def active_approved_loans(side)
-    if side == "offers"
-      lent.where(active: true).joins(:loan_offer)
-    elsif side == "requests"
-      borrowed.where(active: true).joins(:loan_request)
-    else
-      []
+    def active_approved_loans(side)
+      if side == "offers"
+        lent.where(active: true).joins(:loan_offer)
+      elsif side == "requests"
+        borrowed.where(active: true).joins(:loan_request)
+      else
+        []
+      end
     end
-  end
+
+    def self.active_users
+      User.where(active:true).size
+    end
+
+    def self.inactive_users
+      User.where(active:false).size
+    end
 
 end

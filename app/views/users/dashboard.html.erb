@@ -1,6 +1,9 @@
 <div class="container">
 	<div class="row user-dashboard">
 		<h1>Hello, <%= @user.first_name %></h1>
+		<div class="col-md-3">
+				<%= image_tag @user.image_path, size:"200" %>
+		</div>
 		<div class="col-md-4 stats">
 			<table class="table table-striped table-bordered">
 				<tr>
