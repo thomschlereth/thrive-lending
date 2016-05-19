@@ -7,21 +7,12 @@
         <h5>Looking for guaranteed returns? These members have proven themselves with timely payments on previous loans.</h5>
       </div>
       <div class="autoplay" id="auto">
-        <div><a href="#"><img src="http://www.placehold.it/200x200" /></a></div>
-        <div><a href="#"><img src="http://www.placehold.it/200x200" /></a></div>
-        <div><a href="#"><img src="http://www.placehold.it/200x200" /></a></div>
-        <div><a href="#"><img src="http://www.placehold.it/200x200" /></a></div>
-        <div><a href="#"><img src="http://www.placehold.it/200x200" /></a></div>
-        <div><a href="#"><img src="http://www.placehold.it/200x200" /></a></div>
-        <div><a href="#"><img src="http://www.placehold.it/200x200" /></a></div>
-        <div><a href="#"><img src="http://www.placehold.it/200x200" /></a></div>
-        <div><a href="#"><img src="http://www.placehold.it/300x300" /></a></div>
+        <% @featured_users.each do |user| %>
+          <div><%= link_to image_tag(user.image_path, size: "200"), user_loan_offers_path(username: user.username) %></div>
+        <% end %>
       </div>
       <div id="featured-list">
-        <li><a href="#"><img src="http://www.placehold.it/200x200" /></a></li>
-        <li><a href="#"><img src="http://www.placehold.it/200x200" /></a></li>
-        <li><a href="#"><img src="http://www.placehold.it/200x200" /></a></li>
-        <li><a href="#"><img src="http://www.placehold.it/200x200" /></a></li>
+        mobile list!
       </div>
     </div>
   </div>
