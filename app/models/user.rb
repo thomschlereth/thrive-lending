@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
                              length: { minimum: 5 }
 
   enum role: ["default", "admin"]
+  before_create { generate_token(:auth_token) }
 
   def loans_count(side)
     active_loans(side).size
@@ -74,6 +75,12 @@ class User < ActiveRecord::Base
 
     def self.inactive_users
       User.where(active:false).size
+    end
+
+    def generate_token(column)
+      begin
+        self[column] = SecureRandom.urlsafe_base64
+      end while User.exists?(column => self[column])
     end
 
 end

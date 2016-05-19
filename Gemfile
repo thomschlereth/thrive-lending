@@ -28,6 +28,7 @@ gem 'unicorn'
 gem 'faker'
 gem 'pry'
 gem 'fotofetch'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 group :development, :test do

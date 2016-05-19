@@ -9,12 +9,13 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      session[:username] = @user.username
+      cookies[:auth_token] = @user.auth_token
       flash[:notice] = "Logged in as #{@user.first_name} #{@user.last_name}"
-      redirect_to session[:redirect]
+      redirect_to dashboard_path
       UserNotifier.welcome(@user, @user.email).deliver_now
     else
       flash.now[:danger] = @user.errors.full_messages.join(", ")
+      redirect_to session[:redirect]
       render :new
     end
   end
