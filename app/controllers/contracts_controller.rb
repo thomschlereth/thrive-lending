@@ -1,9 +1,13 @@
 class ContractsController < ApplicationController
 
   def new
-    cart = session[:cart].transform_keys { |k| k.to_sym }
-    @loan_requests = cart[:requests].map { |lr| LoanRequest.find(lr) }
-    @loan_offers = cart[:offers].map { |lo| LoanOffer.find(lo) }
+    if current_user
+      cart = session[:cart].transform_keys { |k| k.to_sym }
+      @loan_requests = cart[:requests].map { |lr| LoanRequest.find(lr) }
+      @loan_offers = cart[:offers].map { |lo| LoanOffer.find(lo) }
+    else
+      render file: '/public/404'
+    end
   end
 
   def create
@@ -11,7 +15,7 @@ class ContractsController < ApplicationController
     loan_requests = LoanRequest.find(cart[:requests])
     loan_offers = LoanOffer.find(cart[:offers])
     loan_requests.each do |lr|
-      current_user.lent.create(loan_request_id: lr.id, borrower_id: lr.user_id)
+      current_user.lent.create(loan_request_id: lr.id, borrower_id: lr.user_id) if lr.active
       borrower = User.find(lr.user_id)
       UserNotifier.contract_notice(current_user, borrower, current_user.email).deliver_now
       UserNotifier.contract_notice(borrower, current_user, borrower.email).deliver_now
@@ -19,7 +23,7 @@ class ContractsController < ApplicationController
     end
 
     loan_offers.each do |lo|
-      current_user.borrowed.create(loan_offer_id: lo.id, lender_id: lo.user_id)
+      current_user.borrowed.create(loan_offer_id: lo.id, lender_id: lo.user_id) if lo.active
       lender = User.find(lo.user_id)
       UserNotifier.contract_notice(current_user, lender, current_user.email).deliver_now
       UserNotifier.contract_notice(lender, current_user, lender.email).deliver_now

@@ -1,4 +1,4 @@
-# NachomomsPaleo
+# Thrive Lending
 ## Built with Ruby on Rails
 
 ### Authors
