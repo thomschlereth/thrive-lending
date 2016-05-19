@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :loan_requests, only: [:index, :create, :new, :edit, :update, :destroy]
   post "/contracts", to: "contracts#create", as: "contracts"
   post "/contracts/:id", to: "contracts#reinstate", as: "reinstate_contract"
-  resources :contracts, only: [:new, :destroy]
+  resources :contracts, only: [:new, :destroy, :index]
 
   get "/:username/loan_requests/", to: "user/loan_requests#index", as: "user_loan_requests"
   get "/:username/loan_requests/:id", to: "user/loan_requests#show", as: "user_loan_request"

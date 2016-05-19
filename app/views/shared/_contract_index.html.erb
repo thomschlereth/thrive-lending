@@ -2,9 +2,9 @@
   <ul class="list-group list-group-flush">
     <li class="list-group-item">Lender: <%= contract.full_name("lender") %></li>
     <li class="list-group-item">Borrower: <%= contract.full_name("borrower") %></li>
-    <li class="list-group-item">Amount: <%= contract.amount(loan_type) %></li>
-    <li class="list-group-item">Term: <%= contract.months(loan_type) %></li>
-    <li class="list-group-item">Rate: <%= contract.ir(loan_type) %></li>
+    <li class="list-group-item">Amount: <%= contract.admin_amount %></li>
+    <li class="list-group-item">Term: <%= contract.admin_months %></li>
+    <li class="list-group-item">Rate: <%= contract.admin_ir %></li>
     <li class="list-group-item">Status: <%= contract.status %></li>
     <li class="list-group-item">Active: <%= contract.active if current_admin?%></li>
     <li class="list-group-item">

@@ -40,6 +40,15 @@ class ContractsController < ApplicationController
     end
   end
 
+  def index
+    if current_admin?
+      @active_contracts = Contract.all.where(active: true)
+      @inactive_contracts = Contract.all.where(active: false)
+    else
+      render file: '/public/404'
+    end
+  end
+
   def reinstate
     if current_admin?
       contract = Contract.find(params[:id])

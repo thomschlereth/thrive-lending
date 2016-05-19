@@ -1,0 +1,31 @@
+<div class="mainbody">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>All Contracts</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="panel panel-success">
+          <div class="panel-heading">
+            <h4>Active Contracts:</h4>
+          </div>
+          <% @active_contracts.each do |c| %>
+            <%= render partial: "shared/contract_index", locals: { c:c } %>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h4>Inactive Contracts:</h4>
+          </div>
+          <% @inactive_contracts.each do |c| %>
+            <%= render partial: "shared/contract_index", locals: { c:c } %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

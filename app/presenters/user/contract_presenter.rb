@@ -17,6 +17,11 @@ class User::ContractPresenter < User::BasePresenter
     end
   end
 
+  def admin_amount
+    number_to_currency(@model.loan_request.amount) if @model.loan_request
+    number_to_currency(@model.loan_offer.amount) if @model.loan_offer
+  end
+
   def months(side)
     if side == "request"
       "#{@model.loan_request.term} Months" if @model.loan_request
@@ -24,6 +29,12 @@ class User::ContractPresenter < User::BasePresenter
       "#{@model.loan_offer.term} Months" if @model.loan_offer
     end
   end
+
+  def admin_months
+    "#{@model.loan_request.term} Months" if @model.loan_request
+    "#{@model.loan_offer.term} Months" if @model.loan_offer
+  end
+
 
   def ir(side)
     if side == "request"
@@ -33,5 +44,9 @@ class User::ContractPresenter < User::BasePresenter
     end
   end
 
+  def admin_ir
+    "#{@model.loan_request.rate}%" if @model.loan_request
+    "#{@model.loan_offer.rate}%" if @model.loan_offer
+  end
 
 end
