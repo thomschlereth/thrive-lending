@@ -9,7 +9,7 @@ RSpec.feature "Logged in admin can delete user" do
   end
 
   scenario "when they visit users page and click delete" do
-    visit user_path(@user1.username)
+    visit user_path(@user1.username) 
 
     expect(User.where(active: true).count).to eq(4)
 

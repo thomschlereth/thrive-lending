@@ -36,5 +36,6 @@ Rails.application.routes.draw do
   get "/:current_username/contracts", to: "user/contracts#index", as: "user_contracts"
 
   get "/:category", to: "categories#show"
-  # get "/*page", to: "errors#not_found"
+  get "/*page", to: "errors#not_found"
+  post '/notification' => 'notification#create'
 end
