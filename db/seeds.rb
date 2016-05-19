@@ -34,13 +34,13 @@ class Seed
     puts "Creating Loan Offers"
     until LoanOffer.count == 50 do
       begin
-        user = User.find(rand(3..50))
+        user = User.find(rand(0..50))
         loan = user.loan_offers.create!(amount: rand(50..10000),
          rate: "#{rand(3..20)}.#{rand(0..99)}".to_f,
          term: rand(3..12))
         create_offer_contract(user.id, loan.id) if (rand(1..10)<5)
       rescue
-        user = User.find(rand(3..50))
+        user = User.find(rand(0..50))
         user.loan_offers.create!(amount: rand(50..10000),
          rate: "#{rand(3..20)}.#{rand(0..99)}".to_f,
          term: rand(3..12))
@@ -53,13 +53,13 @@ class Seed
     puts "Creating Loan Requests"
     until LoanRequest.count == 50 do
       begin
-        user = User.find(rand(3..50))
+        user = User.find(rand(0..50))
         loan = user.loan_requests.create!(amount: rand(50..10000),
          rate: "#{rand(3..20)}.#{rand(0..99)}".to_f,
          term: rand(6..72))
         create_request_contract(user.id, loan.id) if (rand(1..10)<5)
       rescue
-        user = User.find(rand(3..50))
+        user = User.find(rand(0..50))
         user.loan_requests.create!(amount: rand(50..10000),
          rate: "#{rand(3..20)}.#{rand(0..99)}".to_f,
          term: rand(6..72))
