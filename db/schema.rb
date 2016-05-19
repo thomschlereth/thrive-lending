@@ -11,6 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20160519021345) do
 
   # These are extensions that must be enabled in order to support this database
@@ -91,20 +92,22 @@ ActiveRecord::Schema.define(version: 20160519021345) do
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string  "first_name"
-    t.string  "last_name"
-    t.string  "email"
-    t.string  "city"
-    t.string  "state"
-    t.string  "zipcode"
-    t.string  "password_digest"
-    t.string  "address"
-    t.integer "role"
-    t.string  "username"
-    t.boolean "active",          default: true
-    t.string  "description"
-    t.string  "image_path"
-    t.string  "auth_token"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zipcode"
+    t.string   "password_digest"
+    t.string   "address"
+    t.integer  "role"
+    t.string   "username"
+    t.boolean  "active",                 default: true
+    t.string   "description"
+    t.string   "image_path"
+    t.string   "auth_token"
+    t.string   "password_reset_token"
+    t.datetime "password_reset_sent_at"
   end
 
   add_foreign_key "loan_offers", "users"
