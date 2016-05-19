@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.feature "User can add loan requests to cart" do
 
-before(:each) do
+    before(:each) do
         create_user(2)
         owner = User.last
         create_loan_request(1, owner.id)
@@ -16,4 +16,4 @@ before(:each) do
         expect(page).to have_content "You cannot accept your own loan."
     end
 
-  end
+end

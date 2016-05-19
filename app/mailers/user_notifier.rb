@@ -1,6 +1,6 @@
 class UserNotifier < ApplicationMailer
    
-   def welcome(user, user_email)
+  def welcome(user, user_email)
     @user = user
     mail(to: user_email, subject: "Welcome to Thrive Lending, #{@user.first_name}!")
   end

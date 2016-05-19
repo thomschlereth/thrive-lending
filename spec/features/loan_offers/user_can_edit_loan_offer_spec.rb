@@ -2,7 +2,6 @@ require "rails_helper"
 
 RSpec.feature "User can edit a loan offer" do
 
-
     before(:each) do
         create_user(2)
         allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(User.first)

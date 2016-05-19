@@ -15,7 +15,6 @@ class UsersController < ApplicationController
       UserNotifier.welcome(@user, @user.email).deliver_now
     else
       flash.now[:danger] = @user.errors.full_messages.join(", ")
-      redirect_to session[:redirect]
       render :new
     end
   end

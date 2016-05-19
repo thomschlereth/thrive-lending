@@ -41,6 +41,8 @@ Rails.application.routes.draw do
   post '/notification' => 'notification#create'
 
   get "/:category", to: "categories#show"
+  
   post '/notification' => 'notification#create'
   get "/*page", to: "errors#not_found"
+
 end

@@ -7,7 +7,6 @@ RSpec.feature "User can remove loan requests from cart" do
         owner = User.last
         create_loan_request(1, owner.id)
         allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(User.first)
-
     end
 
     scenario "user can remove a loan request from their cart" do

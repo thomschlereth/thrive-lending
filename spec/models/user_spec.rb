@@ -97,4 +97,33 @@ RSpec.describe User, type: :model do
     expect(user1.net_worth).to eq expected
   end
 
+  it "returns all active users in the class" do
+    create_user(3)
+
+    expect(User.active_users).to eq 3
+    expect(User.inactive_users).to eq 0
+  end
+
+  it "returns all inactive users in the class" do
+    create_user(3)
+    User.last.update(active: false)
+
+    expect(User.active_users).to eq 2
+    expect(User.inactive_users).to eq 1
+  end
+
+  it "generates a password reset token" do
+    create_user
+    user = User.last
+
+    expect(user.password_reset_token).to eq nil
+    expect(user.password_reset_sent_at).to eq nil
+
+    user.send_password_reset
+
+    refute ActionMailer::Base.deliveries.empty?
+    expect(user.password_reset_token).not_to eq nil
+    expect(user.password_reset_sent_at).to be > 1.minute.ago
+  end
+
 end

@@ -7,7 +7,6 @@ RSpec.feature "User can add loan offers to cart" do
         owner = User.last
         create_loan_offer(1, owner.id)
         allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(User.first)
-
     end
 
     scenario "user can add a loan offer to their cart" do

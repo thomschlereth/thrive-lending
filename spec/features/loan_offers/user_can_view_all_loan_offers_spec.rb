@@ -24,7 +24,5 @@ RSpec.feature "User can view all loan offers" do
         expect(page).to have_content offer.term
         expect(page).to have_content ActionController::Base.helpers.number_to_currency(offer1.amount)
         expect(page).to have_content offer1.term
-
-
     end
 end
