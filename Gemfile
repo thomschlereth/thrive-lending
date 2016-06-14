@@ -42,6 +42,7 @@ group :development, :test do
   gem 'rspec-mocks'
   gem 'shoulda'
   gem 'simplecov', '~> 0.11.2'
+  gem 'google-api-client'
   gem 'rspec-core'
   gem 'rspec-expectations'
   gem 'rspec-support'
