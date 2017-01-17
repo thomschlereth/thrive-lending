@@ -18,7 +18,7 @@ You can find a live version of this application on Heroku at: [https://thrive-le
 
 To set up a local copy of this project, perform the following:
 
-  1. Clone the repository: `git clone https://github.com/kristindiannefoss/little_shop.git`
+  1. Clone the repository: `git clone https://github.com/thompickett/thrive-lending.git`
   2. `cd` into the project's directory
   3. Run `bundle install`
   4. Run `rake db:create db:migrate db:seed` to set up the postgres database and seed it with users, loan_offers, loan_requests, and contracts.
